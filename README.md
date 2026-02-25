@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/eu-vat-rates-data)](https://www.npmjs.com/package/eu-vat-rates-data)
 [![PyPI version](https://img.shields.io/pypi/v/eu-vat-rates-data)](https://pypi.org/project/eu-vat-rates-data/)
 [![Packagist version](https://img.shields.io/packagist/v/vatnode/eu-vat-rates-data)](https://packagist.org/packages/vatnode/eu-vat-rates-data)
-[![Go Reference](https://pkg.go.dev/badge/github.com/vatnode/eu-vat-rates-go.svg)](https://pkg.go.dev/github.com/vatnode/eu-vat-rates-go)
+[![Go Reference](https://pkg.go.dev/badge/github.com/vatnode/eu-vat-rates-data-go.svg)](https://pkg.go.dev/github.com/vatnode/eu-vat-rates-data-go)
 [![Gem Version](https://img.shields.io/gem/v/eu_vat_rates_data)](https://rubygems.org/gems/eu_vat_rates_data)
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data?path=data%2Feu-vat-rates.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data/commits/main/data/eu-vat-rates.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -22,7 +22,7 @@ EU VAT rates for all **27 EU member states** plus the **United Kingdom**, source
 | JavaScript / TypeScript | [npm](https://www.npmjs.com/package/eu-vat-rates-data) | `npm install eu-vat-rates-data` |
 | Python | [PyPI](https://pypi.org/project/eu-vat-rates-data/) | `pip install eu-vat-rates-data` |
 | PHP | [Packagist](https://packagist.org/packages/vatnode/eu-vat-rates-data) | `composer require vatnode/eu-vat-rates-data` |
-| Go | [pkg.go.dev](https://pkg.go.dev/github.com/vatnode/eu-vat-rates-go) | `go get github.com/vatnode/eu-vat-rates-go` |
+| Go | [pkg.go.dev](https://pkg.go.dev/github.com/vatnode/eu-vat-rates-data-go) | `go get github.com/vatnode/eu-vat-rates-data-go` |
 | Ruby | [RubyGems](https://rubygems.org/gems/eu_vat_rates_data) | `gem install eu_vat_rates_data` |
 
 ---
