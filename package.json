@@ -1,6 +1,6 @@
 {
   "name": "eu-vat-rates-data",
-  "version": "2026.2.25",
+  "version": "2026.2.26",
   "description": "EU VAT rates for all 27 member states + UK. Checked daily from EC TEDB, published automatically when rates change.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -38,10 +38,10 @@
     "europe"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/vatnode/eu-vat-rates-data#readme",
+  "homepage": "https://github.com/vatnode/eu-vat-rates-data-js#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vatnode/eu-vat-rates-data.git"
+    "url": "git+https://github.com/vatnode/eu-vat-rates-data-js.git"
   },
   "publishConfig": {
     "access": "public"
