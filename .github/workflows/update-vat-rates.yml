@@ -50,26 +50,21 @@ jobs:
             python3 scripts/update.py
           fi
 
-      - name: Check for changes
+      - name: Check for file changes
         id: diff
         run: |
           if git diff --quiet data/eu-vat-rates.json; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No rate changes detected."
+            echo "file_changed=false" >> "$GITHUB_OUTPUT"
           else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Rate changes detected — will publish new version."
+            echo "file_changed=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Bump version and rebuild
-        if: steps.diff.outputs.changed == 'true' && github.event.inputs.dry_run != 'true'
+        if: steps.fetch.outputs.rates_changed == 'true' && github.event.inputs.dry_run != 'true'
         run: |
-          # Use date-based version: YYYY.M.D (no leading zeros)
           VERSION=$(date -u +%Y.%-m.%-d)
-          # If we already published today, append a counter
           EXISTING=$(npm view eu-vat-rates-data version 2>/dev/null || echo "")
           if [ "$EXISTING" = "$VERSION" ]; then
-            # find next available: YYYY.M.D.1, YYYY.M.D.2, …
             COUNT=1
             while npm view "eu-vat-rates-data@${VERSION}.${COUNT}" version &>/dev/null; do
               COUNT=$((COUNT + 1))
@@ -81,18 +76,23 @@ jobs:
           npm run build
 
       - name: Publish to npm
-        if: steps.diff.outputs.changed == 'true' && github.event.inputs.dry_run != 'true'
+        if: steps.fetch.outputs.rates_changed == 'true' && github.event.inputs.dry_run != 'true'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit and push
-        if: steps.diff.outputs.changed == 'true' && github.event.inputs.dry_run != 'true'
+        if: steps.diff.outputs.file_changed == 'true' && github.event.inputs.dry_run != 'true'
         run: |
           DATE=$(date -u +%Y-%m-%d)
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION=$(node -p "require('./package.json').version" 2>/dev/null || echo "")
           git config user.name "vatnode-bot"
           git config user.email "bot@vatnode.dev"
-          git add data/eu-vat-rates.json package.json
-          git commit -m "chore: update VAT rates ${DATE} (v${VERSION})"
+          if [ "${{ steps.fetch.outputs.rates_changed }}" = "true" ]; then
+            git add data/eu-vat-rates.json package.json
+            git commit -m "chore: update VAT rates ${DATE} (v${VERSION})"
+          else
+            git add data/eu-vat-rates.json
+            git commit -m "chore: update version date ${DATE}"
+          fi
           git push

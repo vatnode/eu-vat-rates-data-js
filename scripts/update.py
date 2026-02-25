@@ -293,6 +293,15 @@ def compute_diff(old_dataset: dict, new_dataset: dict) -> list[str]:
 # Main
 # ---------------------------------------------------------------------------
 
+def _set_github_output(key: str, value: str) -> None:
+    """Write a key=value pair to $GITHUB_OUTPUT if running in GitHub Actions."""
+    import os
+    gh_output = os.environ.get("GITHUB_OUTPUT")
+    if gh_output:
+        with open(gh_output, "a") as f:
+            f.write(f"{key}={value}\n")
+
+
 def main() -> int:
     dry_run = "--dry-run" in sys.argv
 
@@ -307,6 +316,7 @@ def main() -> int:
             "Endpoint: " + TEDB_ENDPOINT,
             file=sys.stderr,
         )
+        _set_github_output("rates_changed", "false")
         return 1
 
     new_dataset = build_dataset(eu_rates)
@@ -319,26 +329,31 @@ def main() -> int:
         except (json.JSONDecodeError, OSError) as exc:
             print(f"  Warning: could not read existing file: {exc}", file=sys.stderr)
 
-    diff_lines = compute_diff(old_dataset, new_dataset)
+    # Check if actual VAT rates changed (ignoring version date)
+    rate_diff = compute_diff(old_dataset, new_dataset)
+    rates_changed = bool(rate_diff)
 
-    if not diff_lines:
-        print(f"\nNo changes detected (version: {old_dataset.get('version', 'n/a')}).")
-        return 0
+    if rate_diff:
+        print(f"\nRate changes ({len(rate_diff)} fields):")
+        for line in rate_diff:
+            print(line)
+    else:
+        print(f"\nNo rate changes. Updating version date: "
+              f"{old_dataset.get('version', 'n/a')} → {new_dataset['version']}")
 
-    print(f"\nChanges ({len(diff_lines)} fields):")
-    for line in diff_lines:
-        print(line)
+    _set_github_output("rates_changed", "true" if rates_changed else "false")
 
     if dry_run:
         print("\n[dry-run] File not updated.")
         return 0
 
+    # Always write the file — version date is always today
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     DATA_FILE.write_text(
         json.dumps(new_dataset, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    print(f"\nUpdated: {DATA_FILE}  (version: {new_dataset['version']})")
+    print(f"Updated: {DATA_FILE}  (version: {new_dataset['version']})")
     return 0
 
 
