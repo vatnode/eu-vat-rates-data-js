@@ -1,86 +1,128 @@
 # eu-vat-rates-data
 
 [![npm version](https://img.shields.io/npm/v/eu-vat-rates-data)](https://www.npmjs.com/package/eu-vat-rates-data)
+[![PyPI version](https://img.shields.io/pypi/v/eu-vat-rates-data)](https://pypi.org/project/eu-vat-rates-data/)
+[![Packagist version](https://img.shields.io/packagist/v/vatnode/eu-vat-rates-data)](https://packagist.org/packages/vatnode/eu-vat-rates-data)
+[![Go Reference](https://pkg.go.dev/badge/github.com/vatnode/eu-vat-rates-go.svg)](https://pkg.go.dev/github.com/vatnode/eu-vat-rates-go)
+[![Gem Version](https://img.shields.io/gem/v/eu_vat_rates_data)](https://rubygems.org/gems/eu_vat_rates_data)
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data?path=data%2Feu-vat-rates.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data/commits/main/data/eu-vat-rates.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Auto-updated VAT rates for all **27 EU member states** plus the **United Kingdom**, sourced from the [European Commission TEDB](https://taxation-customs.ec.europa.eu/tedb/vatRates.html). Refreshed every Monday.
+EU VAT rates for all **27 EU member states** plus the **United Kingdom**, sourced from the [European Commission TEDB](https://taxation-customs.ec.europa.eu/tedb/vatRates.html). Checked daily, published automatically when rates change.
+
+- Standard, reduced, super-reduced, and parking rates
+- TypeScript types included — works in Node.js and the browser
+- JSON file committed to git — full rate-change history via `git log`
+- Checked daily via GitHub Actions, new npm version published only when rates change
+
+**Available in 5 ecosystems:**
+
+| Language | Package | Install |
+|---|---|---|
+| JavaScript / TypeScript | [npm](https://www.npmjs.com/package/eu-vat-rates-data) | `npm install eu-vat-rates-data` |
+| Python | [PyPI](https://pypi.org/project/eu-vat-rates-data/) | `pip install eu-vat-rates-data` |
+| PHP | [Packagist](https://packagist.org/packages/vatnode/eu-vat-rates-data) | `composer require vatnode/eu-vat-rates-data` |
+| Go | [pkg.go.dev](https://pkg.go.dev/github.com/vatnode/eu-vat-rates-go) | `go get github.com/vatnode/eu-vat-rates-go` |
+| Ruby | [RubyGems](https://rubygems.org/gems/eu_vat_rates_data) | `gem install eu_vat_rates_data` |
 
 ---
 
-## Install
+## Installation
 
 ```bash
 npm install eu-vat-rates-data
+# or
+yarn add eu-vat-rates-data
+# or
+pnpm add eu-vat-rates-data
 ```
 
+---
+
 ## Usage
+
+### TypeScript / ESM
 
 ```ts
 import { getRate, getStandardRate, getAllRates, isEUMember, dataVersion } from 'eu-vat-rates-data'
 
-getRate('FI')
-// { country: 'Finland', currency: 'EUR', standard: 25.5, reduced: [10, 13.5], ... }
+// Full rate object for a country
+const fi = getRate('FI')
+// {
+//   country: 'Finland',
+//   currency: 'EUR',
+//   standard: 25.5,
+//   reduced: [10, 13.5],
+//   super_reduced: null,
+//   parking: null
+// }
 
-getStandardRate('DE')  // 19
-getStandardRate('FR')  // 20
+// Just the standard rate
+getStandardRate('DE') // → 19
 
-isEUMember('DE')  // true
-isEUMember('US')  // false
+// Type guard
+if (isEUMember(userInput)) {
+  const rate = getRate(userInput) // type: VatRate (never undefined)
+}
 
-dataVersion  // "2026.2.25" — date of last rate update
+// All 28 countries at once
+const all = getAllRates()
+Object.entries(all).forEach(([code, rate]) => {
+  console.log(`${code}: ${rate.standard}%`)
+})
+
+// When were these rates last fetched?
+console.log(dataVersion) // e.g. "2026-02-25"
 ```
 
-CommonJS:
+### CommonJS
 
 ```js
-const { getRate } = require('eu-vat-rates-data')
+const { getRate, isEUMember } = require('eu-vat-rates-data')
+
+console.log(getRate('FR').standard) // 20
 ```
 
----
-
-## Data
-
-### JSON — no npm required
+### Direct JSON — always the latest data
 
 ```
+# Served directly from GitHub CDN:
 https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data@main/data/eu-vat-rates.json
-```
 
-Raw GitHub (always latest commit):
-
-```
+# Raw GitHub (always latest commit):
 https://raw.githubusercontent.com/vatnode/eu-vat-rates-data/main/data/eu-vat-rates.json
 ```
 
 ```js
-const { rates } = await fetch(
+const res = await fetch(
   'https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data@main/data/eu-vat-rates.json'
-).then(r => r.json())
-
-rates.DE  // { standard: 19, reduced: [7], ... }
+)
+const { rates } = await res.json()
+console.log(rates.DE.standard) // 19
 ```
 
-### Structure
+---
+
+## Data structure
 
 ```ts
 interface VatRate {
-  country:       string        // "Finland"
-  currency:      string        // "EUR" | "DKK" | "GBP" | ...
-  standard:      number        // 25.5
-  reduced:       number[]      // [10, 13.5] — sorted ascending
-  super_reduced: number | null
-  parking:       number | null
+  country:      string        // "Finland"
+  currency:     string        // "EUR" (or "DKK", "GBP", …)
+  standard:     number        // 25.5
+  reduced:      number[]      // [10, 13.5] — sorted ascending
+  super_reduced: number | null // null when not applicable
+  parking:      number | null  // null when not applicable
 }
 ```
 
-`reduced` includes all rates from TEDB verbatim — some countries have territorial variants (e.g. French DOM, Azores).
+`reduced` may contain rates for special territories (e.g. French DOM departments, Azores/Madeira for Portugal, Canary Islands for Spain). All values come verbatim from EC TEDB.
 
 ### Country codes
 
-ISO 3166-1 alpha-2. Greece is `GR` (TEDB uses `EL` internally, normalised here).
+Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB internally uses `EL`, which this package normalises).
 
-### Example
+### Example JSON entry
 
 ```json
 {
@@ -100,17 +142,35 @@ ISO 3166-1 alpha-2. Greece is `GR` (TEDB uses `EL` internally, normalised here).
 }
 ```
 
-### Covered countries
+---
 
-EU-27 + United Kingdom (28 total):
+## Data source & update frequency
 
-`AT` `BE` `BG` `CY` `CZ` `DE` `DK` `EE` `ES` `FI` `FR` `GB` `GR` `HR` `HU` `IE` `IT` `LT` `LU` `LV` `MT` `NL` `PL` `PT` `RO` `SE` `SI` `SK`
+Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)** via its official SOAP web service:
+
+- WSDL: `https://ec.europa.eu/taxation_customs/tedb/ws/VatRetrievalService.wsdl`
+- Refreshed: **daily at 07:00 UTC**
+- Published: new npm version only when actual rates change (not on date-only updates)
+- History: `git log -- data/eu-vat-rates.json` gives a full audit trail of VAT changes across the EU
+
+To manually trigger a refresh, go to [Actions → Run workflow](https://github.com/vatnode/eu-vat-rates-data/actions/workflows/update-vat-rates.yml).
+
+To run locally:
+
+```bash
+git clone https://github.com/vatnode/eu-vat-rates-data.git
+cd eu-vat-rates-data
+pip install requests
+python3 scripts/update.py
+```
 
 ---
 
-## Update frequency
+## Covered countries
 
-Data is fetched from [EC TEDB SOAP API](https://ec.europa.eu/taxation_customs/tedb/ws/VatRetrievalService.wsdl) every Monday. When rates change, a new npm version is published automatically and the change is committed here — so `git log` on this repo is a public audit trail of VAT changes across the EU.
+EU-27 member states + United Kingdom (28 countries total):
+
+`AT` `BE` `BG` `CY` `CZ` `DE` `DK` `EE` `ES` `FI` `FR` `GB` `GR` `HR` `HU` `IE` `IT` `LT` `LU` `LV` `MT` `NL` `PL` `PT` `RO` `SE` `SI` `SK`
 
 ---
 
