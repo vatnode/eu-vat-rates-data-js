@@ -1,0 +1,52 @@
+{
+  "name": "eu-vat-rates-data",
+  "version": "0.1.0",
+  "description": "Auto-updated EU VAT rates dataset for all 27 EU member states + UK, sourced from European Commission TEDB",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./data": "./data/eu-vat-rates.json"
+  },
+  "files": [
+    "dist",
+    "data",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "typecheck": "tsc --noEmit",
+    "update": "python3 scripts/update.py"
+  },
+  "keywords": [
+    "vat",
+    "eu",
+    "european-union",
+    "tax",
+    "rates",
+    "europe"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vatnode/eu-vat-rates-data.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0"
+  }
+}

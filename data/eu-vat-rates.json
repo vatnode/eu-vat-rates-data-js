@@ -1,0 +1,313 @@
+{
+  "version": "2026-02-24",
+  "source": "European Commission TEDB",
+  "url": "https://taxation-customs.ec.europa.eu/tedb/vatRates.html",
+  "rates": {
+    "AT": {
+      "country": "Austria",
+      "currency": "EUR",
+      "standard": 20.0,
+      "reduced": [
+        10.0,
+        13.0,
+        19.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "BE": {
+      "country": "Belgium",
+      "currency": "EUR",
+      "standard": 21.0,
+      "reduced": [
+        6.0,
+        12.0
+      ],
+      "super_reduced": null,
+      "parking": 12.0
+    },
+    "BG": {
+      "country": "Bulgaria",
+      "currency": "BGN",
+      "standard": 20.0,
+      "reduced": [
+        9.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "CY": {
+      "country": "Cyprus",
+      "currency": "EUR",
+      "standard": 19.0,
+      "reduced": [
+        5.0,
+        9.0
+      ],
+      "super_reduced": 3.0,
+      "parking": null
+    },
+    "CZ": {
+      "country": "Czech Republic",
+      "currency": "CZK",
+      "standard": 21.0,
+      "reduced": [
+        12.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "DE": {
+      "country": "Germany",
+      "currency": "EUR",
+      "standard": 19.0,
+      "reduced": [
+        7.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "DK": {
+      "country": "Denmark",
+      "currency": "DKK",
+      "standard": 25.0,
+      "reduced": [],
+      "super_reduced": null,
+      "parking": null
+    },
+    "EE": {
+      "country": "Estonia",
+      "currency": "EUR",
+      "standard": 24.0,
+      "reduced": [
+        9.0,
+        13.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "ES": {
+      "country": "Spain",
+      "currency": "EUR",
+      "standard": 21.0,
+      "reduced": [
+        10.0
+      ],
+      "super_reduced": 4.0,
+      "parking": null
+    },
+    "FI": {
+      "country": "Finland",
+      "currency": "EUR",
+      "standard": 25.5,
+      "reduced": [
+        10.0,
+        13.5
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "FR": {
+      "country": "France",
+      "currency": "EUR",
+      "standard": 20.0,
+      "reduced": [
+        0.9,
+        1.05,
+        5.5,
+        8.5,
+        10.0,
+        13.0
+      ],
+      "super_reduced": 2.1,
+      "parking": null
+    },
+    "GB": {
+      "country": "United Kingdom",
+      "currency": "GBP",
+      "standard": 20.0,
+      "reduced": [
+        5.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "GR": {
+      "country": "Greece",
+      "currency": "EUR",
+      "standard": 24.0,
+      "reduced": [
+        6.0,
+        13.0,
+        17.0
+      ],
+      "super_reduced": 4.0,
+      "parking": 13.0
+    },
+    "HR": {
+      "country": "Croatia",
+      "currency": "EUR",
+      "standard": 25.0,
+      "reduced": [
+        5.0,
+        13.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "HU": {
+      "country": "Hungary",
+      "currency": "HUF",
+      "standard": 27.0,
+      "reduced": [
+        5.0,
+        18.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "IE": {
+      "country": "Ireland",
+      "currency": "EUR",
+      "standard": 23.0,
+      "reduced": [
+        9.0,
+        13.5
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "IT": {
+      "country": "Italy",
+      "currency": "EUR",
+      "standard": 22.0,
+      "reduced": [
+        5.0,
+        10.0
+      ],
+      "super_reduced": 4.0,
+      "parking": null
+    },
+    "LT": {
+      "country": "Lithuania",
+      "currency": "EUR",
+      "standard": 21.0,
+      "reduced": [
+        5.0,
+        12.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "LU": {
+      "country": "Luxembourg",
+      "currency": "EUR",
+      "standard": 17.0,
+      "reduced": [
+        8.0,
+        14.0
+      ],
+      "super_reduced": 3.0,
+      "parking": 14.0
+    },
+    "LV": {
+      "country": "Latvia",
+      "currency": "EUR",
+      "standard": 21.0,
+      "reduced": [
+        5.0,
+        12.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "MT": {
+      "country": "Malta",
+      "currency": "EUR",
+      "standard": 18.0,
+      "reduced": [
+        5.0,
+        7.0
+      ],
+      "super_reduced": null,
+      "parking": 12.0
+    },
+    "NL": {
+      "country": "Netherlands",
+      "currency": "EUR",
+      "standard": 21.0,
+      "reduced": [
+        9.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "PL": {
+      "country": "Poland",
+      "currency": "PLN",
+      "standard": 23.0,
+      "reduced": [
+        5.0,
+        8.0
+      ],
+      "super_reduced": 8.0,
+      "parking": null
+    },
+    "PT": {
+      "country": "Portugal",
+      "currency": "EUR",
+      "standard": 23.0,
+      "reduced": [
+        6.0,
+        13.0,
+        16.0,
+        22.0
+      ],
+      "super_reduced": 6.0,
+      "parking": 13.0
+    },
+    "RO": {
+      "country": "Romania",
+      "currency": "RON",
+      "standard": 21.0,
+      "reduced": [
+        11.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "SE": {
+      "country": "Sweden",
+      "currency": "SEK",
+      "standard": 25.0,
+      "reduced": [
+        6.0,
+        12.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "SI": {
+      "country": "Slovenia",
+      "currency": "EUR",
+      "standard": 22.0,
+      "reduced": [
+        5.0,
+        9.5
+      ],
+      "super_reduced": null,
+      "parking": null
+    },
+    "SK": {
+      "country": "Slovakia",
+      "currency": "EUR",
+      "standard": 23.0,
+      "reduced": [
+        5.0,
+        19.0
+      ],
+      "super_reduced": null,
+      "parking": null
+    }
+  }
+}
