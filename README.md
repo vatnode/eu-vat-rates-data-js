@@ -1,11 +1,7 @@
 # eu-vat-rates-data
 
 [![npm version](https://img.shields.io/npm/v/eu-vat-rates-data)](https://www.npmjs.com/package/eu-vat-rates-data)
-[![PyPI version](https://img.shields.io/pypi/v/eu-vat-rates-data)](https://pypi.org/project/eu-vat-rates-data/)
-[![Packagist version](https://img.shields.io/packagist/v/vatnode/eu-vat-rates-data)](https://packagist.org/packages/vatnode/eu-vat-rates-data)
-[![Go Reference](https://pkg.go.dev/badge/github.com/vatnode/eu-vat-rates-data-go.svg)](https://pkg.go.dev/github.com/vatnode/eu-vat-rates-data-go)
-[![Gem Version](https://img.shields.io/gem/v/eu_vat_rates_data)](https://rubygems.org/gems/eu_vat_rates_data)
-[![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data?path=data%2Feu-vat-rates.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data/commits/main/data/eu-vat-rates.json)
+[![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 EU VAT rates for all **27 EU member states** plus the **United Kingdom**, sourced from the [European Commission TEDB](https://taxation-customs.ec.europa.eu/tedb/vatRates.html). Checked daily, published automatically when rates change.
@@ -87,15 +83,15 @@ console.log(getRate('FR').standard) // 20
 
 ```
 # Served directly from GitHub CDN:
-https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data@main/data/eu-vat-rates.json
+https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates.json
 
 # Raw GitHub (always latest commit):
-https://raw.githubusercontent.com/vatnode/eu-vat-rates-data/main/data/eu-vat-rates.json
+https://raw.githubusercontent.com/vatnode/eu-vat-rates-data-js/main/data/eu-vat-rates.json
 ```
 
 ```js
 const res = await fetch(
-  'https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data@main/data/eu-vat-rates.json'
+  'https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates.json'
 )
 const { rates } = await res.json()
 console.log(rates.DE.standard) // 19
@@ -153,12 +149,12 @@ Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)
 - Published: new npm version only when actual rates change (not on date-only updates)
 - History: `git log -- data/eu-vat-rates.json` gives a full audit trail of VAT changes across the EU
 
-To manually trigger a refresh, go to [Actions → Run workflow](https://github.com/vatnode/eu-vat-rates-data/actions/workflows/update-vat-rates.yml).
+To manually trigger a refresh, go to [Actions → Run workflow](https://github.com/vatnode/eu-vat-rates-data-js/actions/workflows/update-vat-rates.yml).
 
 To run locally:
 
 ```bash
-git clone https://github.com/vatnode/eu-vat-rates-data.git
+git clone https://github.com/vatnode/eu-vat-rates-data-js.git
 cd eu-vat-rates-data
 pip install requests
 python3 scripts/update.py
