@@ -149,7 +149,6 @@ Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)
 - Published: new npm version only when actual rates change (not on date-only updates)
 - History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes across the EU
 
-To manually trigger a refresh, go to [Actions → Run workflow](https://github.com/vatnode/eu-vat-rates-data-js/actions/workflows/update-vat-rates.yml).
 
 Data is fetched by the [eu-vat-rates-data](https://github.com/vatnode/eu-vat-rates-data) repository and synced here daily.
 
