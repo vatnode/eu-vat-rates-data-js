@@ -26,8 +26,7 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --clean",
-    "typecheck": "tsc --noEmit",
-    "update": "python3 scripts/update.py"
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "vat",
