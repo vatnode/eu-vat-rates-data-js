@@ -53,7 +53,7 @@ jobs:
       - name: Check for file changes
         id: diff
         run: |
-          if git diff --quiet data/eu-vat-rates.json; then
+          if git diff --quiet data/eu-vat-rates-data.json; then
             echo "file_changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "file_changed=true" >> "$GITHUB_OUTPUT"
@@ -89,10 +89,10 @@ jobs:
           git config user.name "vatnode-bot"
           git config user.email "bot@vatnode.dev"
           if [ "${{ steps.fetch.outputs.rates_changed }}" = "true" ]; then
-            git add data/eu-vat-rates.json package.json
+            git add data/eu-vat-rates-data.json package.json
             git commit -m "chore: update VAT rates ${DATE} (v${VERSION})"
           else
-            git add data/eu-vat-rates.json
+            git add data/eu-vat-rates-data.json
             git commit -m "chore: update version date ${DATE}"
           fi
           git push

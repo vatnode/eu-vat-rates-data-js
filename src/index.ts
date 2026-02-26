@@ -1,4 +1,4 @@
-import data from '../data/eu-vat-rates.json'
+import data from '../data/eu-vat-rates-data.json'
 
 // ---------------------------------------------------------------------------
 // Types

@@ -17,7 +17,7 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./data": "./data/eu-vat-rates.json"
+    "./data": "./data/eu-vat-rates-data.json"
   },
   "files": [
     "dist",

@@ -61,7 +61,7 @@ CURRENCY: dict[str, str] = {
     "PL": "PLN", "RO": "RON", "SE": "SEK", "GB": "GBP",
 }
 
-DATA_FILE = Path(__file__).parent.parent / "data" / "eu-vat-rates.json"
+DATA_FILE = Path(__file__).parent.parent / "data" / "eu-vat-rates-data.json"
 
 # EC TEDB SOAP service (HTTP per WSDL, redirects to HTTPS)
 TEDB_ENDPOINT = "https://ec.europa.eu/taxation_customs/tedb/ws/"

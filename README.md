@@ -1,7 +1,7 @@
 # eu-vat-rates-data
 
 [![npm version](https://img.shields.io/npm/v/eu-vat-rates-data)](https://www.npmjs.com/package/eu-vat-rates-data)
-[![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates.json)
+[![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates-data.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates-data.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 EU VAT rates for all **27 EU member states** plus the **United Kingdom**, sourced from the [European Commission TEDB](https://taxation-customs.ec.europa.eu/tedb/vatRates.html). Checked daily, published automatically when rates change.
@@ -83,15 +83,15 @@ console.log(getRate('FR').standard) // 20
 
 ```
 # Served directly from GitHub CDN:
-https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates.json
+https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates-data.json
 
 # Raw GitHub (always latest commit):
-https://raw.githubusercontent.com/vatnode/eu-vat-rates-data-js/main/data/eu-vat-rates.json
+https://raw.githubusercontent.com/vatnode/eu-vat-rates-data-js/main/data/eu-vat-rates-data.json
 ```
 
 ```js
 const res = await fetch(
-  'https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates.json'
+  'https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates-data.json'
 )
 const { rates } = await res.json()
 console.log(rates.DE.standard) // 19
@@ -147,7 +147,7 @@ Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)
 - WSDL: `https://ec.europa.eu/taxation_customs/tedb/ws/VatRetrievalService.wsdl`
 - Refreshed: **daily at 07:00 UTC**
 - Published: new npm version only when actual rates change (not on date-only updates)
-- History: `git log -- data/eu-vat-rates.json` gives a full audit trail of VAT changes across the EU
+- History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes across the EU
 
 To manually trigger a refresh, go to [Actions → Run workflow](https://github.com/vatnode/eu-vat-rates-data-js/actions/workflows/update-vat-rates.yml).
 
