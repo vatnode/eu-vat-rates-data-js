@@ -170,6 +170,18 @@ EU-27 member states + United Kingdom (28 countries total):
 
 ---
 
+## Need to validate VAT numbers?
+
+This package provides **VAT rates** only. If you also need to **validate EU VAT numbers** against the official VIES database — confirming a business is VAT-registered — check out [vatnode.dev](https://vatnode.dev), a simple REST API with a free tier.
+
+```bash
+curl https://api.vatnode.dev/v1/vat/FI17156132 \
+  -H "Authorization: Bearer vat_live_..."
+# → { "valid": true, "companyName": "Suomen Pehmeä Ikkuna Oy" }
+```
+
 ## License
 
 MIT
+
+If you find this useful, a ⭐ on GitHub is appreciated.
