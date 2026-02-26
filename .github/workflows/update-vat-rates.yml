@@ -2,65 +2,56 @@ name: Update EU VAT Rates
 
 on:
   schedule:
-    # Every day at 07:00 UTC (08:00 Brussels winter / 09:00 summer)
-    - cron: '0 7 * * *'
+    # Every day at 08:00 UTC — 1 hour after the data repo updates at 07:00
+    - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
-      dry_run:
-        description: 'Dry run (show diff without publishing)'
+      force_publish:
+        description: 'Force publish even if rates have not changed'
         type: boolean
         default: false
 
 jobs:
   update:
-    name: Fetch, commit & publish updated rates
+    name: Sync data & publish to npm
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Python dependencies
-        run: pip install requests
-
-      - name: Install Node.js dependencies
-        run: npm install
-
-      - name: Fetch latest VAT rates
-        id: fetch
+      - name: Fetch latest data from canonical repo
         run: |
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            python3 scripts/update.py --dry-run
-          else
-            python3 scripts/update.py
-          fi
+          curl -sf https://raw.githubusercontent.com/vatnode/eu-vat-rates-data/main/data/eu-vat-rates-data.json \
+            -o data/eu-vat-rates-data.json
 
-      - name: Check for file changes
+      - name: Check if rates changed
         id: diff
         run: |
           if git diff --quiet data/eu-vat-rates-data.json; then
-            echo "file_changed=false" >> "$GITHUB_OUTPUT"
+            echo "rates_changed=false" >> "$GITHUB_OUTPUT"
           else
-            echo "file_changed=true" >> "$GITHUB_OUTPUT"
+            # Check if actual rates changed vs just version date
+            OLD=$(git show HEAD:data/eu-vat-rates-data.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(json.dumps(d['rates'], sort_keys=True))")
+            NEW=$(python3 -c "import sys,json; d=json.load(open('data/eu-vat-rates-data.json')); print(json.dumps(d['rates'], sort_keys=True))")
+            if [ "$OLD" = "$NEW" ]; then
+              echo "rates_changed=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "rates_changed=true" >> "$GITHUB_OUTPUT"
+            fi
           fi
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Bump version and rebuild
-        if: steps.fetch.outputs.rates_changed == 'true' && github.event.inputs.dry_run != 'true'
+        if: steps.diff.outputs.rates_changed == 'true' || github.event.inputs.force_publish == 'true'
         run: |
           VERSION=$(date -u +%Y.%-m.%-d)
           EXISTING=$(npm view eu-vat-rates-data version 2>/dev/null || echo "")
@@ -76,23 +67,22 @@ jobs:
           npm run build
 
       - name: Publish to npm
-        if: steps.fetch.outputs.rates_changed == 'true' && github.event.inputs.dry_run != 'true'
+        if: steps.diff.outputs.rates_changed == 'true' || github.event.inputs.force_publish == 'true'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit and push
-        if: steps.diff.outputs.file_changed == 'true' && github.event.inputs.dry_run != 'true'
         run: |
           DATE=$(date -u +%Y-%m-%d)
           VERSION=$(node -p "require('./package.json').version" 2>/dev/null || echo "")
           git config user.name "vatnode-bot"
           git config user.email "bot@vatnode.dev"
-          if [ "${{ steps.fetch.outputs.rates_changed }}" = "true" ]; then
+          if [ "${{ steps.diff.outputs.rates_changed }}" = "true" ] || [ "${{ github.event.inputs.force_publish }}" = "true" ]; then
             git add data/eu-vat-rates-data.json package.json
-            git commit -m "chore: update VAT rates ${DATE} (v${VERSION})"
+            git diff --staged --quiet || git commit -m "chore: update VAT rates ${DATE} (v${VERSION})"
           else
             git add data/eu-vat-rates-data.json
-            git commit -m "chore: update version date ${DATE}"
+            git diff --staged --quiet || git commit -m "chore: update version date ${DATE}"
           fi
           git push

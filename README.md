@@ -83,15 +83,15 @@ console.log(getRate('FR').standard) // 20
 
 ```
 # Served directly from GitHub CDN:
-https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates-data.json
+https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data@main/data/eu-vat-rates-data.json
 
 # Raw GitHub (always latest commit):
-https://raw.githubusercontent.com/vatnode/eu-vat-rates-data-js/main/data/eu-vat-rates-data.json
+https://raw.githubusercontent.com/vatnode/eu-vat-rates-data/main/data/eu-vat-rates-data.json
 ```
 
 ```js
 const res = await fetch(
-  'https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data-js@main/data/eu-vat-rates-data.json'
+  'https://cdn.jsdelivr.net/gh/vatnode/eu-vat-rates-data@main/data/eu-vat-rates-data.json'
 )
 const { rates } = await res.json()
 console.log(rates.DE.standard) // 19
@@ -151,14 +151,7 @@ Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)
 
 To manually trigger a refresh, go to [Actions → Run workflow](https://github.com/vatnode/eu-vat-rates-data-js/actions/workflows/update-vat-rates.yml).
 
-To run locally:
-
-```bash
-git clone https://github.com/vatnode/eu-vat-rates-data-js.git
-cd eu-vat-rates-data
-pip install requests
-python3 scripts/update.py
-```
+Data is fetched by the [eu-vat-rates-data](https://github.com/vatnode/eu-vat-rates-data) repository and synced here daily.
 
 ---
 
