@@ -1,0 +1,57 @@
+name: Weekly Download Stats
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch npm weekly downloads
+        id: npm
+        run: |
+          NPM=$(curl -s "https://api.npmjs.org/downloads/point/last-week/eu-vat-rates-data" | python3 -c "import sys,json; print(json.load(sys.stdin)['downloads'])")
+          NPM_TOTAL=$(curl -s "https://api.npmjs.org/downloads/point/2024-01-01:$(date +%Y-%m-%d)/eu-vat-rates-data" | python3 -c "import sys,json; print(json.load(sys.stdin)['downloads'])")
+          echo "npm_weekly=$NPM" >> "$GITHUB_OUTPUT"
+          echo "npm_total=$NPM_TOTAL" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch PyPI weekly downloads
+        id: pypi
+        run: |
+          PYPI=$(curl -s "https://pypistats.org/api/packages/eu-vat-rates-data/recent?period=week" | python3 -c "import sys,json; print(json.load(sys.stdin)['data']['last_week'])")
+          echo "pypi_weekly=$PYPI" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch GitHub stars
+        id: stars
+        run: |
+          JS_STARS=$(curl -s "https://api.github.com/repos/vatnode/eu-vat-rates-data-js" | python3 -c "import sys,json; print(json.load(sys.stdin)['stargazers_count'])")
+          PY_STARS=$(curl -s "https://api.github.com/repos/vatnode/eu-vat-rates-data-python" | python3 -c "import sys,json; print(json.load(sys.stdin)['stargazers_count'])")
+          PHP_STARS=$(curl -s "https://api.github.com/repos/vatnode/eu-vat-rates-data-php" | python3 -c "import sys,json; print(json.load(sys.stdin)['stargazers_count'])")
+          GO_STARS=$(curl -s "https://api.github.com/repos/vatnode/eu-vat-rates-data-go" | python3 -c "import sys,json; print(json.load(sys.stdin)['stargazers_count'])")
+          RB_STARS=$(curl -s "https://api.github.com/repos/vatnode/eu-vat-rates-data-ruby" | python3 -c "import sys,json; print(json.load(sys.stdin)['stargazers_count'])")
+          TOTAL=$((JS_STARS + PY_STARS + PHP_STARS + GO_STARS + RB_STARS))
+          echo "js=$JS_STARS py=$PY_STARS php=$PHP_STARS go=$GO_STARS rb=$RB_STARS total=$TOTAL"
+          echo "total_stars=$TOTAL" >> "$GITHUB_OUTPUT"
+          echo "js_stars=$JS_STARS" >> "$GITHUB_OUTPUT"
+
+      - name: Append to stats log
+        run: |
+          mkdir -p stats
+          DATE=$(date -u +%Y-%m-%d)
+          echo "$DATE,npm_weekly=${{ steps.npm.outputs.npm_weekly }},npm_total=${{ steps.npm.outputs.npm_total }},pypi_weekly=${{ steps.pypi.outputs.pypi_weekly }},stars_total=${{ steps.stars.outputs.total_stars }},stars_js=${{ steps.stars.outputs.js_stars }}" >> stats/downloads.csv
+
+      - name: Commit stats
+        run: |
+          git config user.name "vatnode-bot"
+          git config user.email "bot@vatnode.dev"
+          git add stats/downloads.csv
+          git diff --staged --quiet || git commit -m "chore: weekly stats $(date -u +%Y-%m-%d)"
+          git push
