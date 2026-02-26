@@ -172,6 +172,8 @@ curl https://api.vatnode.dev/v1/vat/FI17156132 \
 # → { "valid": true, "companyName": "Suomen Pehmeä Ikkuna Oy" }
 ```
 
+---
+
 ## License
 
 MIT
