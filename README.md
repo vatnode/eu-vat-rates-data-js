@@ -23,6 +23,20 @@ EU VAT rates for all **27 EU member states** plus the **United Kingdom**, source
 
 ---
 
+## Why eu-vat-rates-data?
+
+| Package | Downloads/week | Last updated | Auto-updates | Source |
+|---|---|---|---|---|
+| **eu-vat-rates-data** | — | daily | ✅ GitHub Actions | EC TEDB (official) |
+| [sales-tax](https://www.npmjs.com/package/sales-tax) | ~210K | manual | ❌ | hardcoded |
+| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | — | 2023 | ❌ | hardcoded |
+| [eu-vat](https://www.npmjs.com/package/eu-vat) | — | 2018 | ❌ | external API |
+| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | — | 2015 | ❌ | hardcoded |
+
+**The key difference:** every other package relies on manual updates or is abandoned. `eu-vat-rates-data` fetches rates from the official European Commission TEDB daily and publishes a new version automatically when anything changes. Finland raised its standard rate from 24% to 25.5% in September 2024 — this package published a new version the same day.
+
+---
+
 ## Installation
 
 ```bash

@@ -34,7 +34,16 @@
     "european-union",
     "tax",
     "rates",
-    "europe"
+    "europe",
+    "vat-rates",
+    "eu-vat",
+    "vat-moss",
+    "digital-services-tax",
+    "billing",
+    "e-commerce",
+    "fintech",
+    "invoice",
+    "typescript"
   ],
   "license": "MIT",
   "homepage": "https://github.com/vatnode/eu-vat-rates-data-js#readme",
