@@ -1,6 +1,6 @@
 {
   "name": "eu-vat-rates-data",
-  "version": "2026.2.27",
+  "version": "2026.3.18",
   "description": "EU VAT rates for all 27 member states + UK. Checked daily from EC TEDB, published automatically when rates change.",
   "type": "module",
   "main": "./dist/index.cjs",
