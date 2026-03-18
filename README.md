@@ -4,12 +4,13 @@
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates-data.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates-data.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-EU VAT rates for all **27 EU member states** plus the **United Kingdom**, sourced from the [European Commission TEDB](https://taxation-customs.ec.europa.eu/tedb/vatRates.html). Checked daily, published automatically when rates change.
+VAT rates for **44 European countries** — EU-27 plus Norway, Switzerland, UK, and more. EU rates sourced from the [European Commission TEDB](https://taxation-customs.ec.europa.eu/tedb/vatRates.html) and checked daily. Non-EU rates maintained manually.
 
 - Standard, reduced, super-reduced, and parking rates
+- `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
 - TypeScript types included — works in Node.js and the browser
 - JSON file committed to git — full rate-change history via `git log`
-- Checked daily via GitHub Actions, new npm version published only when rates change
+- EU rates checked daily via GitHub Actions, new npm version published only when rates change
 
 **Available in 5 ecosystems:**
 
@@ -61,6 +62,7 @@ const fi = getRate('FI')
 // {
 //   country: 'Finland',
 //   currency: 'EUR',
+//   eu_member: true,
 //   standard: 25.5,
 //   reduced: [10, 13.5],
 //   super_reduced: null,
@@ -70,9 +72,9 @@ const fi = getRate('FI')
 // Just the standard rate
 getStandardRate('DE') // → 19
 
-// Type guard
+// EU membership check (false for GB)
 if (isEUMember(userInput)) {
-  const rate = getRate(userInput) // type: VatRate (never undefined)
+  const rate = getRate(userInput) // type narrowed to EUMemberCode
 }
 
 // All 28 countries at once
@@ -119,6 +121,7 @@ console.log(rates.DE.standard) // 19
 interface VatRate {
   country:      string        // "Finland"
   currency:     string        // "EUR" (or "DKK", "GBP", …)
+  eu_member:    boolean       // false for GB
   standard:     number        // 25.5
   reduced:      number[]      // [10, 13.5] — sorted ascending
   super_reduced: number | null // null when not applicable
@@ -143,6 +146,7 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
     "FI": {
       "country": "Finland",
       "currency": "EUR",
+      "eu_member": true,
       "standard": 25.5,
       "reduced": [10, 13.5],
       "super_reduced": null,
@@ -170,9 +174,13 @@ Data is fetched by the [eu-vat-rates-data](https://github.com/vatnode/eu-vat-rat
 
 ## Covered countries
 
-EU-27 member states + United Kingdom (28 countries total):
+**EU-27** (daily auto-updates via EC TEDB):
 
-`AT` `BE` `BG` `CY` `CZ` `DE` `DK` `EE` `ES` `FI` `FR` `GB` `GR` `HR` `HU` `IE` `IT` `LT` `LU` `LV` `MT` `NL` `PL` `PT` `RO` `SE` `SI` `SK`
+`AT` `BE` `BG` `CY` `CZ` `DE` `DK` `EE` `ES` `FI` `FR` `GR` `HR` `HU` `IE` `IT` `LT` `LU` `LV` `MT` `NL` `PL` `PT` `RO` `SE` `SI` `SK`
+
+**Non-EU Europe** (manually maintained):
+
+`AD` `AL` `BA` `CH` `GB` `GE` `IS` `LI` `MC` `MD` `ME` `MK` `NO` `RS` `TR` `UA` `XK`
 
 ---
 

@@ -4,12 +4,23 @@ import data from '../data/eu-vat-rates-data.json'
 // Types
 // ---------------------------------------------------------------------------
 
-/** ISO 3166-1 alpha-2 codes for EU-27 member states plus the United Kingdom. */
+/** ISO 3166-1 alpha-2 codes for all European countries in the dataset (EU-27 + 17 non-EU). */
 export type CountryCode =
+  // EU-27
   | 'AT' | 'BE' | 'BG' | 'CY' | 'CZ' | 'DE' | 'DK' | 'EE'
-  | 'ES' | 'FI' | 'FR' | 'GB' | 'GR' | 'HR' | 'HU' | 'IE'
-  | 'IT' | 'LT' | 'LU' | 'LV' | 'MT' | 'NL' | 'PL' | 'PT'
-  | 'RO' | 'SE' | 'SI' | 'SK'
+  | 'ES' | 'FI' | 'FR' | 'GR' | 'HR' | 'HU' | 'IE' | 'IT'
+  | 'LT' | 'LU' | 'LV' | 'MT' | 'NL' | 'PL' | 'PT' | 'RO'
+  | 'SE' | 'SI' | 'SK'
+  // Non-EU Europe
+  | 'AD' | 'AL' | 'BA' | 'CH' | 'GB' | 'GE' | 'IS' | 'LI'
+  | 'MC' | 'MD' | 'ME' | 'MK' | 'NO' | 'RS' | 'TR' | 'UA' | 'XK'
+
+/** Non-EU European countries in the dataset. */
+type NonEUCode = 'AD' | 'AL' | 'BA' | 'CH' | 'GB' | 'GE' | 'IS' | 'LI'
+              | 'MC' | 'MD' | 'ME' | 'MK' | 'NO' | 'RS' | 'TR' | 'UA' | 'XK'
+
+/** ISO 3166-1 alpha-2 codes for EU-27 member states only. */
+export type EUMemberCode = Exclude<CountryCode, NonEUCode>
 
 /** VAT rate data for a single country. */
 export interface VatRate {
@@ -17,6 +28,8 @@ export interface VatRate {
   country: string
   /** ISO 4217 currency code (EUR for eurozone members). */
   currency: string
+  /** Whether the country is an EU member state. False for GB. */
+  eu_member: boolean
   /** Standard VAT rate in percent (e.g. 20 for 20%). */
   standard: number
   /**
@@ -112,19 +125,20 @@ export function getAllRates(): Record<CountryCode, VatRate> {
 }
 
 /**
- * Returns `true` when the given string is a country code present in the
- * dataset (EU-27 + GB).
+ * Returns `true` when the given string is an EU-27 member state code.
+ * Returns `false` for GB and any unknown code.
  *
- * Acts as a TypeScript type guard narrowing `string` to `CountryCode`.
+ * Acts as a TypeScript type guard narrowing `string` to `EUMemberCode`.
  *
  * @example
  * ```ts
  * isEUMember('DE') // true
+ * isEUMember('GB') // false — not an EU member
  * isEUMember('US') // false
  * ```
  */
-export function isEUMember(code: string): code is CountryCode {
-  return Object.prototype.hasOwnProperty.call(dataset.rates, code)
+export function isEUMember(code: string): code is EUMemberCode {
+  return dataset.rates[code as CountryCode]?.eu_member === true
 }
 
 /**
