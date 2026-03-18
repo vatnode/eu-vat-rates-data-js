@@ -8,9 +8,10 @@
       "currency": "EUR",
       "standard": 4.5,
       "reduced": [
+        1.0,
         2.5
       ],
-      "super_reduced": 1.0,
+      "super_reduced": null,
       "parking": null,
       "eu_member": false
     },
