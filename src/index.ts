@@ -30,6 +30,8 @@ export interface VatRate {
   currency: string
   /** Whether the country is an EU member state. False for GB. */
   eu_member: boolean
+  /** Official name of the VAT tax in the country's primary official language. */
+  vat_name: string
   /** Standard VAT rate in percent (e.g. 20 for 20%). */
   standard: number
   /**

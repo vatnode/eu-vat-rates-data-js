@@ -30,6 +30,12 @@ test('eu_member field is boolean on every entry', () => {
   }
 })
 
+test('all vat_name fields are non-empty strings', () => {
+  for (const [code, rate] of Object.entries(getAllRates())) {
+    assert.ok(rate.vat_name.length > 0, `${code}: vat_name is empty`)
+  }
+})
+
 test('dataVersion matches YYYY-MM-DD format', () => {
   assert.match(dataVersion, /^\d{4}-\d{2}-\d{2}$/)
 })

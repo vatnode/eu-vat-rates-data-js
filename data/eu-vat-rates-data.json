@@ -6,31 +6,34 @@
     "AD": {
       "country": "Andorra",
       "currency": "EUR",
+      "eu_member": false,
+      "vat_name": "Impost General Indirecte",
       "standard": 4.5,
       "reduced": [
         1.0,
         2.5
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "AL": {
       "country": "Albania",
       "currency": "ALL",
+      "eu_member": false,
+      "vat_name": "Tatimi mbi vlerën e shtuar",
       "standard": 20.0,
       "reduced": [
         6.0,
         10.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "AT": {
       "country": "Austria",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Umsatzsteuer",
       "standard": 20.0,
       "reduced": [
         10.0,
@@ -43,16 +46,18 @@
     "BA": {
       "country": "Bosnia and Herzegovina",
       "currency": "BAM",
+      "eu_member": false,
+      "vat_name": "Porez na dodanu vrijednost",
       "standard": 17.0,
       "reduced": [],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "BE": {
       "country": "Belgium",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Belasting over de toegevoegde waarde",
       "standard": 21.0,
       "reduced": [
         6.0,
@@ -65,6 +70,7 @@
       "country": "Bulgaria",
       "currency": "BGN",
       "eu_member": true,
+      "vat_name": "Данък върху добавената стойност",
       "standard": 20.0,
       "reduced": [
         9.0
@@ -75,19 +81,21 @@
     "CH": {
       "country": "Switzerland",
       "currency": "CHF",
+      "eu_member": false,
+      "vat_name": "Mehrwertsteuer",
       "standard": 8.1,
       "reduced": [
         2.6,
         3.8
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "CY": {
       "country": "Cyprus",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Φόρος Προστιθέμενης Αξίας",
       "standard": 19.0,
       "reduced": [
         5.0,
@@ -100,6 +108,7 @@
       "country": "Czech Republic",
       "currency": "CZK",
       "eu_member": true,
+      "vat_name": "Daň z přidané hodnoty",
       "standard": 21.0,
       "reduced": [
         12.0
@@ -111,6 +120,7 @@
       "country": "Germany",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Umsatzsteuer",
       "standard": 19.0,
       "reduced": [
         7.0
@@ -122,6 +132,7 @@
       "country": "Denmark",
       "currency": "DKK",
       "eu_member": true,
+      "vat_name": "Moms",
       "standard": 25.0,
       "reduced": [],
       "super_reduced": null,
@@ -131,6 +142,7 @@
       "country": "Estonia",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Käibemaks",
       "standard": 24.0,
       "reduced": [
         9.0,
@@ -143,6 +155,7 @@
       "country": "Spain",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Impuesto sobre el Valor Añadido",
       "standard": 21.0,
       "reduced": [
         10.0
@@ -154,6 +167,7 @@
       "country": "Finland",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Arvonlisävero",
       "standard": 25.5,
       "reduced": [
         10.0,
@@ -166,6 +180,7 @@
       "country": "France",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Taxe sur la valeur ajoutée",
       "standard": 20.0,
       "reduced": [
         0.9,
@@ -182,6 +197,7 @@
       "country": "United Kingdom",
       "currency": "GBP",
       "eu_member": false,
+      "vat_name": "Value Added Tax",
       "standard": 20.0,
       "reduced": [
         5.0
@@ -192,16 +208,18 @@
     "GE": {
       "country": "Georgia",
       "currency": "GEL",
+      "eu_member": false,
+      "vat_name": "დამატებული ღირებულების გადასახადი",
       "standard": 18.0,
       "reduced": [],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "GR": {
       "country": "Greece",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Φόρος Προστιθέμενης Αξίας",
       "standard": 24.0,
       "reduced": [
         6.0,
@@ -215,6 +233,7 @@
       "country": "Croatia",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Porez na dodanu vrijednost",
       "standard": 25.0,
       "reduced": [
         5.0,
@@ -227,6 +246,7 @@
       "country": "Hungary",
       "currency": "HUF",
       "eu_member": true,
+      "vat_name": "Általános forgalmi adó",
       "standard": 27.0,
       "reduced": [
         5.0,
@@ -239,6 +259,7 @@
       "country": "Ireland",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Value Added Tax",
       "standard": 23.0,
       "reduced": [
         9.0,
@@ -250,18 +271,20 @@
     "IS": {
       "country": "Iceland",
       "currency": "ISK",
+      "eu_member": false,
+      "vat_name": "Virðisaukaskattur",
       "standard": 24.0,
       "reduced": [
         11.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "IT": {
       "country": "Italy",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Imposta sul valore aggiunto",
       "standard": 22.0,
       "reduced": [
         5.0,
@@ -273,19 +296,21 @@
     "LI": {
       "country": "Liechtenstein",
       "currency": "CHF",
+      "eu_member": false,
+      "vat_name": "Mehrwertsteuer",
       "standard": 8.1,
       "reduced": [
         2.6,
         3.8
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "LT": {
       "country": "Lithuania",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Pridėtinės vertės mokestis",
       "standard": 21.0,
       "reduced": [
         5.0,
@@ -298,6 +323,7 @@
       "country": "Luxembourg",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Taxe sur la valeur ajoutée",
       "standard": 17.0,
       "reduced": [
         8.0,
@@ -310,6 +336,7 @@
       "country": "Latvia",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Pievienotās vērtības nodoklis",
       "standard": 21.0,
       "reduced": [
         5.0,
@@ -321,54 +348,59 @@
     "MC": {
       "country": "Monaco",
       "currency": "EUR",
+      "eu_member": false,
+      "vat_name": "Taxe sur la valeur ajoutée",
       "standard": 20.0,
       "reduced": [
         5.5,
         10.0
       ],
       "super_reduced": 2.1,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "MD": {
       "country": "Moldova",
       "currency": "MDL",
+      "eu_member": false,
+      "vat_name": "Taxa pe valoarea adăugată",
       "standard": 20.0,
       "reduced": [
         8.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "ME": {
       "country": "Montenegro",
       "currency": "EUR",
+      "eu_member": false,
+      "vat_name": "Porez na dodatu vrijednost",
       "standard": 21.0,
       "reduced": [
         7.0,
         15.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "MK": {
       "country": "North Macedonia",
       "currency": "MKD",
+      "eu_member": false,
+      "vat_name": "Данок на додадена вредност",
       "standard": 18.0,
       "reduced": [
         5.0,
         10.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "MT": {
       "country": "Malta",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Taxxa tal-Valur Miżjud",
       "standard": 18.0,
       "reduced": [
         5.0,
@@ -381,6 +413,7 @@
       "country": "Netherlands",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Belasting over de toegevoegde waarde",
       "standard": 21.0,
       "reduced": [
         9.0
@@ -391,19 +424,21 @@
     "NO": {
       "country": "Norway",
       "currency": "NOK",
+      "eu_member": false,
+      "vat_name": "Merverdiavgift",
       "standard": 25.0,
       "reduced": [
         12.0,
         15.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "PL": {
       "country": "Poland",
       "currency": "PLN",
       "eu_member": true,
+      "vat_name": "Podatek od towarów i usług",
       "standard": 23.0,
       "reduced": [
         5.0,
@@ -416,6 +451,7 @@
       "country": "Portugal",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Imposto sobre o Valor Acrescentado",
       "standard": 23.0,
       "reduced": [
         6.0,
@@ -430,6 +466,7 @@
       "country": "Romania",
       "currency": "RON",
       "eu_member": true,
+      "vat_name": "Taxa pe valoarea adăugată",
       "standard": 21.0,
       "reduced": [
         11.0
@@ -440,18 +477,20 @@
     "RS": {
       "country": "Serbia",
       "currency": "RSD",
+      "eu_member": false,
+      "vat_name": "Porez na dodatu vrednost",
       "standard": 20.0,
       "reduced": [
         10.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "SE": {
       "country": "Sweden",
       "currency": "SEK",
       "eu_member": true,
+      "vat_name": "Mervärdesskatt",
       "standard": 25.0,
       "reduced": [
         6.0,
@@ -464,6 +503,7 @@
       "country": "Slovenia",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Davek na dodano vrednost",
       "standard": 22.0,
       "reduced": [
         5.0,
@@ -476,6 +516,7 @@
       "country": "Slovakia",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Daň z pridanej hodnoty",
       "standard": 23.0,
       "reduced": [
         5.0,
@@ -487,37 +528,40 @@
     "TR": {
       "country": "Turkey",
       "currency": "TRY",
+      "eu_member": false,
+      "vat_name": "Katma Değer Vergisi",
       "standard": 20.0,
       "reduced": [
         1.0,
         10.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "UA": {
       "country": "Ukraine",
       "currency": "UAH",
+      "eu_member": false,
+      "vat_name": "Податок на додану вартість",
       "standard": 20.0,
       "reduced": [
         7.0,
         14.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     },
     "XK": {
       "country": "Kosovo",
       "currency": "EUR",
+      "eu_member": false,
+      "vat_name": "Tatimi mbi Vlerën e Shtuar",
       "standard": 18.0,
       "reduced": [
         8.0
       ],
       "super_reduced": null,
-      "parking": null,
-      "eu_member": false
+      "parking": null
     }
   }
 }
