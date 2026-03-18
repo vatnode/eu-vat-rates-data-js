@@ -72,12 +72,12 @@ const fi = getRate('FI')
 // Just the standard rate
 getStandardRate('DE') // → 19
 
-// EU membership check (false for GB)
+// EU membership check — false for non-EU countries (GB, NO, CH, ...)
 if (isEUMember(userInput)) {
   const rate = getRate(userInput) // type narrowed to EUMemberCode
 }
 
-// All 28 countries at once
+// All 44 countries at once
 const all = getAllRates()
 Object.entries(all).forEach(([code, rate]) => {
   console.log(`${code}: ${rate.standard}%`)
@@ -121,7 +121,7 @@ console.log(rates.DE.standard) // 19
 interface VatRate {
   country:      string        // "Finland"
   currency:     string        // "EUR" (or "DKK", "GBP", …)
-  eu_member:    boolean       // false for GB
+  eu_member:    boolean       // true for EU-27, false for non-EU
   standard:     number        // 25.5
   reduced:      number[]      // [10, 13.5] — sorted ascending
   super_reduced: number | null // null when not applicable
@@ -160,15 +160,10 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 
 ## Data source & update frequency
 
-Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)** via its official SOAP web service:
-
-- WSDL: `https://ec.europa.eu/taxation_customs/tedb/ws/VatRetrievalService.wsdl`
-- Refreshed: **daily at 07:00 UTC**
+- EU-27 rates: **European Commission TEDB**, refreshed **daily at 07:00 UTC**
+- Non-EU rates: maintained manually, updated on official rate changes
 - Published: new npm version only when actual rates change (not on date-only updates)
-- History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes across the EU
-
-
-Data is fetched by the [eu-vat-rates-data](https://github.com/vatnode/eu-vat-rates-data) repository and synced here daily.
+- History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes
 
 ---
 
