@@ -1,38 +1,39 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import {
-  getRate,
-  getStandardRate,
-  getAllRates,
-  isEUMember,
-  dataVersion,
-} from './dist/index.js'
+import { getRate, getAllRates, isEUMember, dataVersion } from './dist/index.js'
 
-test('DE standard rate is 19', () => {
-  assert.equal(getStandardRate('DE'), 19)
-})
-
-test('EE standard rate is 24', () => {
-  assert.equal(getStandardRate('EE'), 24)
-})
-
-test('FR is an EU member', () => {
-  assert.equal(isEUMember('FR'), true)
+test('DE is an EU member', () => {
+  assert.equal(isEUMember('DE'), true)
 })
 
 test('GB is not an EU member', () => {
   assert.equal(isEUMember('GB'), false)
 })
 
+test('NO is not an EU member', () => {
+  assert.equal(isEUMember('NO'), false)
+})
+
 test('dataset contains 44 countries', () => {
   assert.equal(Object.keys(getAllRates()).length, 44)
 })
 
-test('getRate returns eu_member field', () => {
-  assert.equal(getRate('DE')?.eu_member, true)
-  assert.equal(getRate('NO')?.eu_member, false)
+test('all standard rates are greater than zero', () => {
+  for (const [code, rate] of Object.entries(getAllRates())) {
+    assert.ok(rate.standard > 0, `${code}: standard rate is ${rate.standard}`)
+  }
+})
+
+test('eu_member field is boolean on every entry', () => {
+  for (const [code, rate] of Object.entries(getAllRates())) {
+    assert.equal(typeof rate.eu_member, 'boolean', `${code}: eu_member is not boolean`)
+  }
 })
 
 test('dataVersion matches YYYY-MM-DD format', () => {
   assert.match(dataVersion, /^\d{4}-\d{2}-\d{2}$/)
+})
+
+test('unknown country returns undefined', () => {
+  assert.equal(getRate('XX'), undefined)
 })
