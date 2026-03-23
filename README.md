@@ -26,13 +26,13 @@ VAT rates for **44 European countries** — EU-27 plus Norway, Switzerland, UK, 
 
 ## Why eu-vat-rates-data?
 
-| Package | Downloads/week | Last updated | Auto-updates | Source |
-|---|---|---|---|---|
-| **eu-vat-rates-data** | — | daily | ✅ GitHub Actions | EC TEDB (official) |
-| [sales-tax](https://www.npmjs.com/package/sales-tax) | ~210K | manual | ❌ | hardcoded |
-| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | — | 2023 | ❌ | hardcoded |
-| [eu-vat](https://www.npmjs.com/package/eu-vat) | — | 2018 | ❌ | external API |
-| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | — | 2015 | ❌ | hardcoded |
+| Package | Last updated | Auto-updates | Source |
+|---|---|---|---|
+| **eu-vat-rates-data** | daily | ✅ GitHub Actions | EC TEDB (official) |
+| [sales-tax](https://www.npmjs.com/package/sales-tax) | manual | ❌ | hardcoded |
+| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | 2023 | ❌ | hardcoded |
+| [eu-vat](https://www.npmjs.com/package/eu-vat) | 2018 | ❌ | external API |
+| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | 2015 | ❌ | hardcoded |
 
 **The key difference:** every other package relies on manual updates or is abandoned. `eu-vat-rates-data` fetches rates from the official European Commission TEDB daily and publishes a new version automatically when anything changes. Finland raised its standard rate from 24% to 25.5% in September 2024 — this package published a new version the same day.
 
