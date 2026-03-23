@@ -8,6 +8,7 @@ VAT rates for **44 European countries** — EU-27 plus Norway, Switzerland, UK, 
 
 - Standard, reduced, super-reduced, and parking rates
 - `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
+- `vat_name` — official name of the VAT tax in the country's primary official language
 - TypeScript types included — works in Node.js and the browser
 - JSON file committed to git — full rate-change history via `git log`
 - EU rates checked daily via GitHub Actions, new npm version published only when rates change
@@ -63,6 +64,7 @@ const fi = getRate('FI')
 //   country: 'Finland',
 //   currency: 'EUR',
 //   eu_member: true,
+//   vat_name: 'Arvonlisävero',
 //   standard: 25.5,
 //   reduced: [10, 13.5],
 //   super_reduced: null,
@@ -122,6 +124,7 @@ interface VatRate {
   country:      string        // "Finland"
   currency:     string        // "EUR" (or "DKK", "GBP", …)
   eu_member:    boolean       // true for EU-27, false for non-EU
+  vat_name:     string        // "Arvonlisävero" — official name in primary local language
   standard:     number        // 25.5
   reduced:      number[]      // [10, 13.5] — sorted ascending
   super_reduced: number | null // null when not applicable
@@ -147,6 +150,7 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
       "country": "Finland",
       "currency": "EUR",
       "eu_member": true,
+      "vat_name": "Arvonlisävero",
       "standard": 25.5,
       "reduced": [10, 13.5],
       "super_reduced": null,
