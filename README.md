@@ -4,7 +4,7 @@
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates-data.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates-data.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-VAT rates for **44 European countries** — EU-27 plus Norway, Switzerland, UK, and more. EU rates sourced from the [European Commission TEDB](https://taxation-customs.ec.europa.eu/tedb/vatRates.html) and checked daily. Non-EU rates maintained manually.
+VAT rates for **44 European countries** — EU-27 plus Norway, Switzerland, UK, and more. EU rates sourced from the [European Commission TEDB](https://ec.europa.eu/taxation_customs/tedb/) and checked daily. Non-EU rates maintained manually.
 
 - Standard, reduced, super-reduced, and parking rates
 - `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
@@ -144,7 +144,7 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 {
   "version": "2026-02-25",
   "source": "European Commission TEDB",
-  "url": "https://taxation-customs.ec.europa.eu/tedb/vatRates.html",
+  "url": "https://ec.europa.eu/taxation_customs/tedb/",
   "rates": {
     "FI": {
       "country": "Finland",
