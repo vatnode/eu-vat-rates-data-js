@@ -56,7 +56,7 @@ pnpm add eu-vat-rates-data
 ### TypeScript / ESM
 
 ```ts
-import { getRate, getStandardRate, getAllRates, isEUMember, dataVersion } from 'eu-vat-rates-data'
+import { getRate, getStandardRate, getAllRates, isEUMember, isKnownCountry, dataVersion } from 'eu-vat-rates-data'
 
 // Full rate object for a country
 const fi = getRate('FI')
@@ -79,6 +79,11 @@ if (isEUMember(userInput)) {
   const rate = getRate(userInput) // type narrowed to EUMemberCode
 }
 
+// Dataset membership check — true for any of the 44 European countries
+if (isKnownCountry(userInput)) {
+  const rate = getRate(userInput) // type narrowed to CountryCode
+}
+
 // All 44 countries at once
 const all = getAllRates()
 Object.entries(all).forEach(([code, rate]) => {
@@ -92,7 +97,7 @@ console.log(dataVersion) // e.g. "2026-02-25"
 ### CommonJS
 
 ```js
-const { getRate, isEUMember } = require('eu-vat-rates-data')
+const { getRate, isEUMember, isKnownCountry } = require('eu-vat-rates-data')
 
 console.log(getRate('FR').standard) // 20
 ```
