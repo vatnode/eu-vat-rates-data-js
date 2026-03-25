@@ -143,6 +143,24 @@ export function isEUMember(code: string): code is EUMemberCode {
   return dataset.rates[code as CountryCode]?.eu_member === true
 }
 
+
+/**
+ * Returns `true` when the given string is a country code present in the
+ * dataset (all 44 European countries).
+ *
+ * Acts as a TypeScript type guard narrowing `string` to `CountryCode`.
+ * Use `isEUMember` instead to check EU membership specifically.
+ *
+ * @example
+ * ```ts
+ * isKnownCountry('NO') // true
+ * isKnownCountry('US') // false
+ * ```
+ */
+export function isKnownCountry(code: string): code is CountryCode {
+  return Object.prototype.hasOwnProperty.call(dataset.rates, code)
+}
+
 /**
  * ISO 8601 date string indicating when the bundled data was last refreshed
  * from the European Commission TEDB.
