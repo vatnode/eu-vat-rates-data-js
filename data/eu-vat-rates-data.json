@@ -1,7 +1,7 @@
 {
   "version": "2026-03-25",
   "source": "European Commission TEDB",
-  "url": "https://taxation-customs.ec.europa.eu/tedb/vatRates.html",
+  "url": "https://ec.europa.eu/taxation_customs/tedb/",
   "rates": {
     "AD": {
       "country": "Andorra",
