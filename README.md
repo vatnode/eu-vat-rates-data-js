@@ -4,14 +4,15 @@
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates-data.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates-data.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-VAT rates for **44 European countries** — EU-27 plus Norway, Switzerland, UK, and more. EU rates sourced from the [European Commission TEDB](https://ec.europa.eu/taxation_customs/tedb/) and checked daily. Non-EU rates maintained manually.
+VAT rates for **44 European countries** — all EU-27 member states plus Norway, Switzerland, the United Kingdom, and more. EU rates sourced from the [European Commission TEDB](https://ec.europa.eu/taxation_customs/tedb/) and checked daily. Published automatically when rates change.
 
 - Standard, reduced, super-reduced, and parking rates
 - `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
 - `vat_name` — official name of the VAT tax in the country's primary official language
+- `vat_abbr` — short abbreviation used locally (e.g. "ALV", "MwSt", "TVA")
 - TypeScript types included — works in Node.js and the browser
 - JSON file committed to git — full rate-change history via `git log`
-- EU rates checked daily via GitHub Actions, new npm version published only when rates change
+- Checked daily via GitHub Actions, new npm version published only when rates change
 
 **Available in 5 ecosystems:**
 
@@ -27,13 +28,13 @@ VAT rates for **44 European countries** — EU-27 plus Norway, Switzerland, UK, 
 
 ## Why eu-vat-rates-data?
 
-| Package | Last updated | Auto-updates | Source |
-|---|---|---|---|
-| **eu-vat-rates-data** | daily | ✅ GitHub Actions | EC TEDB (official) |
-| [sales-tax](https://www.npmjs.com/package/sales-tax) | manual | ❌ | hardcoded |
-| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | 2023 | ❌ | hardcoded |
-| [eu-vat](https://www.npmjs.com/package/eu-vat) | 2018 | ❌ | external API |
-| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | 2015 | ❌ | hardcoded |
+| Package | Downloads/week | Last updated | Auto-updates | Source |
+|---|---|---|---|---|
+| **eu-vat-rates-data** | — | daily | ✅ GitHub Actions | EC TEDB (official) |
+| [sales-tax](https://www.npmjs.com/package/sales-tax) | ~210K | manual | ❌ | hardcoded |
+| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | — | 2023 | ❌ | hardcoded |
+| [eu-vat](https://www.npmjs.com/package/eu-vat) | — | 2018 | ❌ | external API |
+| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | — | 2015 | ❌ | hardcoded |
 
 **The key difference:** every other package relies on manual updates or is abandoned. `eu-vat-rates-data` fetches rates from the official European Commission TEDB daily and publishes a new version automatically when anything changes. Finland raised its standard rate from 24% to 25.5% in September 2024 — this package published a new version the same day.
 
@@ -65,6 +66,7 @@ const fi = getRate('FI')
 //   currency: 'EUR',
 //   eu_member: true,
 //   vat_name: 'Arvonlisävero',
+//   vat_abbr: 'ALV',
 //   standard: 25.5,
 //   reduced: [10, 13.5],
 //   super_reduced: null,
@@ -91,7 +93,7 @@ Object.entries(all).forEach(([code, rate]) => {
 })
 
 // When were these rates last fetched?
-console.log(dataVersion) // e.g. "2026-02-25"
+console.log(dataVersion) // e.g. "2026-03-25"
 ```
 
 ### CommonJS
@@ -126,14 +128,15 @@ console.log(rates.DE.standard) // 19
 
 ```ts
 interface VatRate {
-  country:      string        // "Finland"
-  currency:     string        // "EUR" (or "DKK", "GBP", …)
-  eu_member:    boolean       // true for EU-27, false for non-EU
-  vat_name:     string        // "Arvonlisävero" — official name in primary local language
-  standard:     number        // 25.5
-  reduced:      number[]      // [10, 13.5] — sorted ascending
+  country:       string        // "Finland"
+  currency:      string        // "EUR" (or "DKK", "GBP", …)
+  eu_member:     boolean       // true for EU-27, false for non-EU
+  vat_name:      string        // "Arvonlisävero" — official name in primary local language
+  vat_abbr:      string        // "ALV" — short abbreviation used locally
+  standard:      number        // 25.5
+  reduced:       number[]      // [10, 13.5] — sorted ascending
   super_reduced: number | null // null when not applicable
-  parking:      number | null  // null when not applicable
+  parking:       number | null // null when not applicable
 }
 ```
 
@@ -147,7 +150,7 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 
 ```json
 {
-  "version": "2026-02-25",
+  "version": "2026-03-27",
   "source": "European Commission TEDB",
   "url": "https://ec.europa.eu/taxation_customs/tedb/",
   "rates": {
@@ -156,6 +159,7 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Arvonlisävero",
+      "vat_abbr": "ALV",
       "standard": 25.5,
       "reduced": [10, 13.5],
       "super_reduced": null,
@@ -169,22 +173,29 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 
 ## Data source & update frequency
 
-- EU-27 rates: **European Commission TEDB**, refreshed **daily at 07:00 UTC**
-- Non-EU rates: maintained manually, updated on official rate changes
+Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)** via its official SOAP web service:
+
+- WSDL: `https://ec.europa.eu/taxation_customs/tedb/ws/VatRetrievalService.wsdl`
+- Refreshed: **daily at 07:00 UTC**
 - Published: new npm version only when actual rates change (not on date-only updates)
-- History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes
+- History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes across the EU
+
+
+Data is fetched by the [eu-vat-rates-data](https://github.com/vatnode/eu-vat-rates-data) repository and synced here daily.
 
 ---
 
 ## Covered countries
 
-**EU-27** (daily auto-updates via EC TEDB):
+EU-27 member states:
 
 `AT` `BE` `BG` `CY` `CZ` `DE` `DK` `EE` `ES` `FI` `FR` `GR` `HR` `HU` `IE` `IT` `LT` `LU` `LV` `MT` `NL` `PL` `PT` `RO` `SE` `SI` `SK`
 
-**Non-EU Europe** (manually maintained):
+Additional European countries:
 
 `AD` `AL` `BA` `CH` `GB` `GE` `IS` `LI` `MC` `MD` `ME` `MK` `NO` `RS` `TR` `UA` `XK`
+
+44 countries total.
 
 ---
 
