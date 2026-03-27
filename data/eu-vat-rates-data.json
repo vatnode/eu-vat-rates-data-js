@@ -1,5 +1,5 @@
 {
-  "version": "2026-03-26",
+  "version": "2026-03-27",
   "source": "European Commission TEDB",
   "url": "https://ec.europa.eu/taxation_customs/tedb/",
   "rates": {
@@ -8,9 +8,10 @@
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Impost General Indirecte",
+      "vat_abbr": "IGI",
       "standard": 4.5,
       "reduced": [
-        1.0,
+        1,
         2.5
       ],
       "super_reduced": null,
@@ -21,10 +22,11 @@
       "currency": "ALL",
       "eu_member": false,
       "vat_name": "Tatimi mbi vlerën e shtuar",
-      "standard": 20.0,
+      "vat_abbr": "TVSH",
+      "standard": 20,
       "reduced": [
-        6.0,
-        10.0
+        6,
+        10
       ],
       "super_reduced": null,
       "parking": null
@@ -34,11 +36,12 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Umsatzsteuer",
-      "standard": 20.0,
+      "vat_abbr": "USt",
+      "standard": 20,
       "reduced": [
-        10.0,
-        13.0,
-        19.0
+        10,
+        13,
+        19
       ],
       "super_reduced": null,
       "parking": null
@@ -48,7 +51,8 @@
       "currency": "BAM",
       "eu_member": false,
       "vat_name": "Porez na dodanu vrijednost",
-      "standard": 17.0,
+      "vat_abbr": "PDV",
+      "standard": 17,
       "reduced": [],
       "super_reduced": null,
       "parking": null
@@ -58,22 +62,24 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Belasting over de toegevoegde waarde",
-      "standard": 21.0,
+      "vat_abbr": "BTW",
+      "standard": 21,
       "reduced": [
-        6.0,
-        12.0
+        6,
+        12
       ],
       "super_reduced": null,
-      "parking": 12.0
+      "parking": 12
     },
     "BG": {
       "country": "Bulgaria",
       "currency": "BGN",
       "eu_member": true,
       "vat_name": "Данък върху добавената стойност",
-      "standard": 20.0,
+      "vat_abbr": "ДДС",
+      "standard": 20,
       "reduced": [
-        9.0
+        9
       ],
       "super_reduced": null,
       "parking": null
@@ -83,6 +89,7 @@
       "currency": "CHF",
       "eu_member": false,
       "vat_name": "Mehrwertsteuer",
+      "vat_abbr": "MWST",
       "standard": 8.1,
       "reduced": [
         2.6,
@@ -96,12 +103,13 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Φόρος Προστιθέμενης Αξίας",
-      "standard": 19.0,
+      "vat_abbr": "ΦΠΑ",
+      "standard": 19,
       "reduced": [
-        5.0,
-        9.0
+        5,
+        9
       ],
-      "super_reduced": 3.0,
+      "super_reduced": 3,
       "parking": null
     },
     "CZ": {
@@ -109,9 +117,10 @@
       "currency": "CZK",
       "eu_member": true,
       "vat_name": "Daň z přidané hodnoty",
-      "standard": 21.0,
+      "vat_abbr": "DPH",
+      "standard": 21,
       "reduced": [
-        12.0
+        12
       ],
       "super_reduced": null,
       "parking": null
@@ -121,9 +130,10 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Umsatzsteuer",
-      "standard": 19.0,
+      "vat_abbr": "MwSt",
+      "standard": 19,
       "reduced": [
-        7.0
+        7
       ],
       "super_reduced": null,
       "parking": null
@@ -133,7 +143,8 @@
       "currency": "DKK",
       "eu_member": true,
       "vat_name": "Moms",
-      "standard": 25.0,
+      "vat_abbr": "moms",
+      "standard": 25,
       "reduced": [],
       "super_reduced": null,
       "parking": null
@@ -143,10 +154,11 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Käibemaks",
-      "standard": 24.0,
+      "vat_abbr": "km",
+      "standard": 24,
       "reduced": [
-        9.0,
-        13.0
+        9,
+        13
       ],
       "super_reduced": null,
       "parking": null
@@ -156,11 +168,12 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Impuesto sobre el Valor Añadido",
-      "standard": 21.0,
+      "vat_abbr": "IVA",
+      "standard": 21,
       "reduced": [
-        10.0
+        10
       ],
-      "super_reduced": 4.0,
+      "super_reduced": 4,
       "parking": null
     },
     "FI": {
@@ -168,9 +181,10 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Arvonlisävero",
+      "vat_abbr": "ALV",
       "standard": 25.5,
       "reduced": [
-        10.0,
+        10,
         13.5
       ],
       "super_reduced": null,
@@ -181,14 +195,15 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Taxe sur la valeur ajoutée",
-      "standard": 20.0,
+      "vat_abbr": "TVA",
+      "standard": 20,
       "reduced": [
         0.9,
         1.05,
         5.5,
         8.5,
-        10.0,
-        13.0
+        10,
+        13
       ],
       "super_reduced": 2.1,
       "parking": null
@@ -198,9 +213,10 @@
       "currency": "GBP",
       "eu_member": false,
       "vat_name": "Value Added Tax",
-      "standard": 20.0,
+      "vat_abbr": "VAT",
+      "standard": 20,
       "reduced": [
-        5.0
+        5
       ],
       "super_reduced": null,
       "parking": null
@@ -210,7 +226,8 @@
       "currency": "GEL",
       "eu_member": false,
       "vat_name": "დამატებული ღირებულების გადასახადი",
-      "standard": 18.0,
+      "vat_abbr": "დღგ",
+      "standard": 18,
       "reduced": [],
       "super_reduced": null,
       "parking": null
@@ -220,24 +237,26 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Φόρος Προστιθέμενης Αξίας",
-      "standard": 24.0,
+      "vat_abbr": "ΦΠΑ",
+      "standard": 24,
       "reduced": [
-        6.0,
-        13.0,
-        17.0
+        6,
+        13,
+        17
       ],
-      "super_reduced": 4.0,
-      "parking": 13.0
+      "super_reduced": 4,
+      "parking": 13
     },
     "HR": {
       "country": "Croatia",
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Porez na dodanu vrijednost",
-      "standard": 25.0,
+      "vat_abbr": "PDV",
+      "standard": 25,
       "reduced": [
-        5.0,
-        13.0
+        5,
+        13
       ],
       "super_reduced": null,
       "parking": null
@@ -247,10 +266,11 @@
       "currency": "HUF",
       "eu_member": true,
       "vat_name": "Általános forgalmi adó",
-      "standard": 27.0,
+      "vat_abbr": "ÁFA",
+      "standard": 27,
       "reduced": [
-        5.0,
-        18.0
+        5,
+        18
       ],
       "super_reduced": null,
       "parking": null
@@ -260,9 +280,10 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Value Added Tax",
-      "standard": 23.0,
+      "vat_abbr": "VAT",
+      "standard": 23,
       "reduced": [
-        9.0,
+        9,
         13.5
       ],
       "super_reduced": null,
@@ -273,9 +294,10 @@
       "currency": "ISK",
       "eu_member": false,
       "vat_name": "Virðisaukaskattur",
-      "standard": 24.0,
+      "vat_abbr": "VSK",
+      "standard": 24,
       "reduced": [
-        11.0
+        11
       ],
       "super_reduced": null,
       "parking": null
@@ -285,12 +307,13 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Imposta sul valore aggiunto",
-      "standard": 22.0,
+      "vat_abbr": "IVA",
+      "standard": 22,
       "reduced": [
-        5.0,
-        10.0
+        5,
+        10
       ],
-      "super_reduced": 4.0,
+      "super_reduced": 4,
       "parking": null
     },
     "LI": {
@@ -298,6 +321,7 @@
       "currency": "CHF",
       "eu_member": false,
       "vat_name": "Mehrwertsteuer",
+      "vat_abbr": "MWST",
       "standard": 8.1,
       "reduced": [
         2.6,
@@ -311,10 +335,11 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Pridėtinės vertės mokestis",
-      "standard": 21.0,
+      "vat_abbr": "PVM",
+      "standard": 21,
       "reduced": [
-        5.0,
-        12.0
+        5,
+        12
       ],
       "super_reduced": null,
       "parking": null
@@ -324,23 +349,25 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Taxe sur la valeur ajoutée",
-      "standard": 17.0,
+      "vat_abbr": "TVA",
+      "standard": 17,
       "reduced": [
-        8.0,
-        14.0
+        8,
+        14
       ],
-      "super_reduced": 3.0,
-      "parking": 14.0
+      "super_reduced": 3,
+      "parking": 14
     },
     "LV": {
       "country": "Latvia",
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Pievienotās vērtības nodoklis",
-      "standard": 21.0,
+      "vat_abbr": "PVN",
+      "standard": 21,
       "reduced": [
-        5.0,
-        12.0
+        5,
+        12
       ],
       "super_reduced": null,
       "parking": null
@@ -350,10 +377,11 @@
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Taxe sur la valeur ajoutée",
-      "standard": 20.0,
+      "vat_abbr": "TVA",
+      "standard": 20,
       "reduced": [
         5.5,
-        10.0
+        10
       ],
       "super_reduced": 2.1,
       "parking": null
@@ -363,9 +391,10 @@
       "currency": "MDL",
       "eu_member": false,
       "vat_name": "Taxa pe valoarea adăugată",
-      "standard": 20.0,
+      "vat_abbr": "TVA",
+      "standard": 20,
       "reduced": [
-        8.0
+        8
       ],
       "super_reduced": null,
       "parking": null
@@ -375,10 +404,11 @@
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Porez na dodatu vrijednost",
-      "standard": 21.0,
+      "vat_abbr": "PDV",
+      "standard": 21,
       "reduced": [
-        7.0,
-        15.0
+        7,
+        15
       ],
       "super_reduced": null,
       "parking": null
@@ -388,10 +418,11 @@
       "currency": "MKD",
       "eu_member": false,
       "vat_name": "Данок на додадена вредност",
-      "standard": 18.0,
+      "vat_abbr": "ДДВ",
+      "standard": 18,
       "reduced": [
-        5.0,
-        10.0
+        5,
+        10
       ],
       "super_reduced": null,
       "parking": null
@@ -401,22 +432,24 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Taxxa tal-Valur Miżjud",
-      "standard": 18.0,
+      "vat_abbr": "VAT",
+      "standard": 18,
       "reduced": [
-        5.0,
-        7.0
+        5,
+        7
       ],
       "super_reduced": null,
-      "parking": 12.0
+      "parking": 12
     },
     "NL": {
       "country": "Netherlands",
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Belasting over de toegevoegde waarde",
-      "standard": 21.0,
+      "vat_abbr": "btw",
+      "standard": 21,
       "reduced": [
-        9.0
+        9
       ],
       "super_reduced": null,
       "parking": null
@@ -426,10 +459,11 @@
       "currency": "NOK",
       "eu_member": false,
       "vat_name": "Merverdiavgift",
-      "standard": 25.0,
+      "vat_abbr": "MVA",
+      "standard": 25,
       "reduced": [
-        12.0,
-        15.0
+        12,
+        15
       ],
       "super_reduced": null,
       "parking": null
@@ -439,12 +473,13 @@
       "currency": "PLN",
       "eu_member": true,
       "vat_name": "Podatek od towarów i usług",
-      "standard": 23.0,
+      "vat_abbr": "VAT",
+      "standard": 23,
       "reduced": [
-        5.0,
-        8.0
+        5,
+        8
       ],
-      "super_reduced": 8.0,
+      "super_reduced": 8,
       "parking": null
     },
     "PT": {
@@ -452,24 +487,26 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Imposto sobre o Valor Acrescentado",
-      "standard": 23.0,
+      "vat_abbr": "IVA",
+      "standard": 23,
       "reduced": [
-        6.0,
-        13.0,
-        16.0,
-        22.0
+        6,
+        13,
+        16,
+        22
       ],
-      "super_reduced": 6.0,
-      "parking": 13.0
+      "super_reduced": 6,
+      "parking": 13
     },
     "RO": {
       "country": "Romania",
       "currency": "RON",
       "eu_member": true,
       "vat_name": "Taxa pe valoarea adăugată",
-      "standard": 21.0,
+      "vat_abbr": "TVA",
+      "standard": 21,
       "reduced": [
-        11.0
+        11
       ],
       "super_reduced": null,
       "parking": null
@@ -479,9 +516,10 @@
       "currency": "RSD",
       "eu_member": false,
       "vat_name": "Porez na dodatu vrednost",
-      "standard": 20.0,
+      "vat_abbr": "PDV",
+      "standard": 20,
       "reduced": [
-        10.0
+        10
       ],
       "super_reduced": null,
       "parking": null
@@ -491,10 +529,11 @@
       "currency": "SEK",
       "eu_member": true,
       "vat_name": "Mervärdesskatt",
-      "standard": 25.0,
+      "vat_abbr": "moms",
+      "standard": 25,
       "reduced": [
-        6.0,
-        12.0
+        6,
+        12
       ],
       "super_reduced": null,
       "parking": null
@@ -504,9 +543,10 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Davek na dodano vrednost",
-      "standard": 22.0,
+      "vat_abbr": "DDV",
+      "standard": 22,
       "reduced": [
-        5.0,
+        5,
         9.5
       ],
       "super_reduced": null,
@@ -517,10 +557,11 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Daň z pridanej hodnoty",
-      "standard": 23.0,
+      "vat_abbr": "DPH",
+      "standard": 23,
       "reduced": [
-        5.0,
-        19.0
+        5,
+        19
       ],
       "super_reduced": null,
       "parking": null
@@ -530,10 +571,11 @@
       "currency": "TRY",
       "eu_member": false,
       "vat_name": "Katma Değer Vergisi",
-      "standard": 20.0,
+      "vat_abbr": "KDV",
+      "standard": 20,
       "reduced": [
-        1.0,
-        10.0
+        1,
+        10
       ],
       "super_reduced": null,
       "parking": null
@@ -543,10 +585,11 @@
       "currency": "UAH",
       "eu_member": false,
       "vat_name": "Податок на додану вартість",
-      "standard": 20.0,
+      "vat_abbr": "ПДВ",
+      "standard": 20,
       "reduced": [
-        7.0,
-        14.0
+        7,
+        14
       ],
       "super_reduced": null,
       "parking": null
@@ -556,9 +599,10 @@
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Tatimi mbi Vlerën e Shtuar",
-      "standard": 18.0,
+      "vat_abbr": "TVSH",
+      "standard": 18,
       "reduced": [
-        8.0
+        8
       ],
       "super_reduced": null,
       "parking": null
