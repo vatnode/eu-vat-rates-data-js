@@ -93,7 +93,7 @@ Object.entries(all).forEach(([code, rate]) => {
 })
 
 // When were these rates last fetched?
-console.log(dataVersion) // e.g. "2026-03-25"
+console.log(dataVersion) // e.g. "2026-03-27"
 ```
 
 ### CommonJS
