@@ -53,15 +53,15 @@ jobs:
       - name: Bump version and rebuild
         if: steps.diff.outputs.rates_changed == 'true' || github.event.inputs.force_publish == 'true'
         run: |
-          VERSION=$(date -u +%Y.%-m.%-d)
-          # Check if this exact version already exists on npm (not just the latest)
-          if npm view "eu-vat-rates-data@${VERSION}" version &>/dev/null 2>&1; then
-            COUNT=1
-            while npm view "eu-vat-rates-data@${VERSION}.${COUNT}" version &>/dev/null 2>&1; do
-              COUNT=$((COUNT + 1))
-            done
-            VERSION="${VERSION}.${COUNT}"
-          fi
+          YEAR=$(date -u +%Y)
+          MONTH=$(date -u +%-m)
+          DAY=$(date -u +%-d)
+          VERSION="${YEAR}.${MONTH}.${DAY}"
+          # If this version already exists, increment the day until we find a free slot
+          while npm view "eu-vat-rates-data@${VERSION}" version &>/dev/null 2>&1; do
+            DAY=$((DAY + 1))
+            VERSION="${YEAR}.${MONTH}.${DAY}"
+          done
           echo "Publishing version: $VERSION"
           npm pkg set version="$VERSION"
           npm run build
