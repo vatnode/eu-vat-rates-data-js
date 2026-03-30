@@ -1,7 +1,7 @@
 {
   "name": "eu-vat-rates-data",
-  "version": "2026.3.2-7.1",
-  "description": "VAT rates for 44 European countries \u2014 EU-27 plus Norway, Switzerland, UK, and more. Updated daily, published automatically when rates change.",
+  "version": "2026.3.30",
+  "description": "VAT rates for 44 European countries — EU-27 plus Norway, Switzerland, UK, and more. Updated daily, published automatically when rates change.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
