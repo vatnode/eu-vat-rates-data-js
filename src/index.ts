@@ -52,6 +52,10 @@ export interface VatRate {
    * Transitional rate for goods taxed at reduced rates before 1991.
    */
   parking: number | null
+  /** Human-readable format description (e.g. "ATU + 8 digits"). */
+  format: string
+  /** Regex pattern string for format validation (without slashes), or null for countries without a standardised format. */
+  pattern: string | null
 }
 
 /** Shape of the bundled dataset JSON. */
