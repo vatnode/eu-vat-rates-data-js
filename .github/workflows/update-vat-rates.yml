@@ -63,7 +63,7 @@ jobs:
             VERSION="${VERSION}.${COUNT}"
           fi
           echo "Publishing version: $VERSION"
-          npm version "$VERSION" --no-git-tag-version
+          npm pkg set version="$VERSION"
           npm run build
 
       - name: Publish to npm
