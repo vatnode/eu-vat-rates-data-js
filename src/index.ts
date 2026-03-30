@@ -32,6 +32,8 @@ export interface VatRate {
   eu_member: boolean
   /** Official name of the VAT tax in the country's primary official language. */
   vat_name: string
+  /** Short local abbreviation of the VAT tax (e.g. "ALV", "MwSt", "TVA"). */
+  vat_abbr: string
   /** Standard VAT rate in percent (e.g. 20 for 20%). */
   standard: number
   /**
@@ -58,8 +60,6 @@ export interface VatDataset {
   version: string
   /** Human-readable source description. */
   source: string
-  /** URL of the upstream data source. */
-  url: string
   /** Map of country code → VAT rate data. */
   rates: Record<CountryCode, VatRate>
 }
