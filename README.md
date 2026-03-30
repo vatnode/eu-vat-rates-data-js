@@ -10,6 +10,8 @@ VAT rates for **44 European countries** — all EU-27 member states plus Norway,
 - `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
 - `vat_name` — official name of the VAT tax in the country's primary official language
 - `vat_abbr` — short abbreviation used locally (e.g. "ALV", "MwSt", "TVA")
+- **`format` — human-readable VAT number format (e.g. `"ATU + 8 digits"`)** — unique to this package
+- **`pattern` — regex for VAT number validation + built-in `validateFormat()` — free, no API key needed** — unique to this package
 - TypeScript types included — works in Node.js and the browser
 - JSON file committed to git — full rate-change history via `git log`
 - Checked daily via GitHub Actions, new npm version published only when rates change
@@ -28,15 +30,15 @@ VAT rates for **44 European countries** — all EU-27 member states plus Norway,
 
 ## Why eu-vat-rates-data?
 
-| Package | Downloads/week | Last updated | Auto-updates | Source |
-|---|---|---|---|---|
-| **eu-vat-rates-data** | — | daily | ✅ GitHub Actions | EC TEDB (official) |
-| [sales-tax](https://www.npmjs.com/package/sales-tax) | ~210K | manual | ❌ | hardcoded |
-| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | — | 2023 | ❌ | hardcoded |
-| [eu-vat](https://www.npmjs.com/package/eu-vat) | — | 2018 | ❌ | external API |
-| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | — | 2015 | ❌ | hardcoded |
+| Package | Auto-updates | VAT number format | Source |
+|---|---|---|---|
+| **eu-vat-rates-data** | ✅ daily (GitHub Actions) | ✅ `format` + `pattern` + `validateFormat()` | EC TEDB (official) |
+| [sales-tax](https://www.npmjs.com/package/sales-tax) | ❌ manual | ❌ | hardcoded |
+| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | ❌ last 2023 | ❌ | hardcoded |
+| [eu-vat](https://www.npmjs.com/package/eu-vat) | ❌ last 2018 | ❌ | external API |
+| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | ❌ last 2015 | ❌ | hardcoded |
 
-**The key difference:** every other package relies on manual updates or is abandoned. `eu-vat-rates-data` fetches rates from the official European Commission TEDB daily and publishes a new version automatically when anything changes. Finland raised its standard rate from 24% to 25.5% in September 2024 — this package published a new version the same day.
+**Two key differences:** (1) every other package relies on manual updates or is abandoned — `eu-vat-rates-data` publishes automatically when rates change, same day. (2) This is the only package that includes VAT number format descriptions and regex patterns for all 44 countries, with a built-in `validateFormat()` function — no API key or network call needed.
 
 ---
 
@@ -94,6 +96,17 @@ Object.entries(all).forEach(([code, rate]) => {
 
 // When were these rates last fetched?
 console.log(dataVersion) // e.g. "2026-03-27"
+
+// VAT number format validation — no API key, no network call
+import { validateFormat } from 'eu-vat-rates-data'
+validateFormat('ATU12345678')  // → true
+validateFormat('DE123456789')  // → true
+validateFormat('INVALID')      // → false
+
+// Access format metadata directly
+const at = getRate('AT')
+console.log(at.format)   // "ATU + 8 digits"
+console.log(at.pattern)  // "^ATU\\d{8}$"
 ```
 
 ### CommonJS
@@ -137,6 +150,8 @@ interface VatRate {
   reduced:       number[]      // [10, 13.5] — sorted ascending
   super_reduced: number | null // null when not applicable
   parking:       number | null // null when not applicable
+  format:        string        // "FI + 8 digits" — human-readable VAT number format
+  pattern:       string | null // "^FI\\d{8}$" — regex for format validation, null if no standard
 }
 ```
 
@@ -150,7 +165,7 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 
 ```json
 {
-  "version": "2026-03-30",
+  "version": "2026-03-31",
   "source": "European Commission TEDB",
   "rates": {
     "FI": {
@@ -162,7 +177,9 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
       "standard": 25.5,
       "reduced": [10, 13.5],
       "super_reduced": null,
-      "parking": null
+      "parking": null,
+      "format": "FI + 8 digits",
+      "pattern": "^FI\\d{8}$"
     }
   }
 }
