@@ -175,3 +175,27 @@ export function isKnownCountry(code: string): code is CountryCode {
  * ```
  */
 export const dataVersion: string = dataset.version
+
+/**
+ * Returns `true` when `vatId` matches the expected VAT number format for its
+ * country (determined by the leading 2-letter country code).
+ *
+ * Validation is done locally using the bundled regex patterns — no API key
+ * or network call required. Returns `false` for countries that have no
+ * standardised format (AD, BA, GE, LI, MC, MD, XK) or for unknown codes.
+ *
+ * @example
+ * ```ts
+ * validateFormat('ATU12345678')  // true
+ * validateFormat('DE123456789')  // true
+ * validateFormat('INVALID')      // false
+ * validateFormat('AD12345')      // false — Andorra has no standard format
+ * ```
+ */
+export function validateFormat(vatId: string): boolean {
+  if (vatId.length < 2) return false
+  const code = vatId.slice(0, 2).toUpperCase()
+  const rate = dataset.rates[code as CountryCode]
+  if (!rate?.pattern) return false
+  return new RegExp(rate.pattern).test(vatId.toUpperCase())
+}
