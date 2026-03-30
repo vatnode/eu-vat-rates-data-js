@@ -4,7 +4,7 @@
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates-data.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates-data.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-VAT rates for **44 European countries** — all EU-27 member states plus Norway, Switzerland, the United Kingdom, and more. EU rates sourced from the [European Commission TEDB](https://ec.europa.eu/taxation_customs/tedb/) and checked daily. Published automatically when rates change.
+VAT rates for **44 European countries** — all EU-27 member states plus Norway, Switzerland, the United Kingdom, and more. EU rates sourced from the European Commission TEDB and checked daily. Published automatically when rates change.
 
 - Standard, reduced, super-reduced, and parking rates
 - `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
@@ -150,9 +150,8 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 
 ```json
 {
-  "version": "2026-03-27",
+  "version": "2026-03-30",
   "source": "European Commission TEDB",
-  "url": "https://ec.europa.eu/taxation_customs/tedb/",
   "rates": {
     "FI": {
       "country": "Finland",
@@ -175,7 +174,6 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 
 Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)** via its official SOAP web service:
 
-- WSDL: `https://ec.europa.eu/taxation_customs/tedb/ws/VatRetrievalService.wsdl`
 - Refreshed: **daily at 07:00 UTC**
 - Published: new npm version only when actual rates change (not on date-only updates)
 - History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes across the EU

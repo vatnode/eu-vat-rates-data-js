@@ -1,13 +1,13 @@
 {
   "version": "2026-03-30",
   "source": "European Commission TEDB",
-  "url": "https://ec.europa.eu/taxation_customs/tedb/",
   "rates": {
     "AD": {
       "country": "Andorra",
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Impost General Indirecte",
+      "vat_abbr": "IGI",
       "standard": 4.5,
       "reduced": [
         1.0,
@@ -21,6 +21,7 @@
       "currency": "ALL",
       "eu_member": false,
       "vat_name": "Tatimi mbi vlerën e shtuar",
+      "vat_abbr": "TVSH",
       "standard": 20.0,
       "reduced": [
         6.0,
@@ -34,6 +35,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Umsatzsteuer",
+      "vat_abbr": "USt",
       "standard": 20.0,
       "reduced": [
         10.0,
@@ -48,6 +50,7 @@
       "currency": "BAM",
       "eu_member": false,
       "vat_name": "Porez na dodanu vrijednost",
+      "vat_abbr": "PDV",
       "standard": 17.0,
       "reduced": [],
       "super_reduced": null,
@@ -58,6 +61,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Belasting over de toegevoegde waarde",
+      "vat_abbr": "BTW",
       "standard": 21.0,
       "reduced": [
         6.0,
@@ -71,6 +75,7 @@
       "currency": "BGN",
       "eu_member": true,
       "vat_name": "Данък върху добавената стойност",
+      "vat_abbr": "ДДС",
       "standard": 20.0,
       "reduced": [
         9.0
@@ -83,6 +88,7 @@
       "currency": "CHF",
       "eu_member": false,
       "vat_name": "Mehrwertsteuer",
+      "vat_abbr": "MWST",
       "standard": 8.1,
       "reduced": [
         2.6,
@@ -96,6 +102,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Φόρος Προστιθέμενης Αξίας",
+      "vat_abbr": "ΦΠΑ",
       "standard": 19.0,
       "reduced": [
         5.0,
@@ -109,6 +116,7 @@
       "currency": "CZK",
       "eu_member": true,
       "vat_name": "Daň z přidané hodnoty",
+      "vat_abbr": "DPH",
       "standard": 21.0,
       "reduced": [
         12.0
@@ -121,6 +129,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Umsatzsteuer",
+      "vat_abbr": "MwSt",
       "standard": 19.0,
       "reduced": [
         7.0
@@ -133,6 +142,7 @@
       "currency": "DKK",
       "eu_member": true,
       "vat_name": "Moms",
+      "vat_abbr": "moms",
       "standard": 25.0,
       "reduced": [],
       "super_reduced": null,
@@ -143,6 +153,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Käibemaks",
+      "vat_abbr": "km",
       "standard": 24.0,
       "reduced": [
         9.0,
@@ -156,6 +167,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Impuesto sobre el Valor Añadido",
+      "vat_abbr": "IVA",
       "standard": 21.0,
       "reduced": [
         10.0
@@ -168,6 +180,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Arvonlisävero",
+      "vat_abbr": "ALV",
       "standard": 25.5,
       "reduced": [
         10.0,
@@ -181,6 +194,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Taxe sur la valeur ajoutée",
+      "vat_abbr": "TVA",
       "standard": 20.0,
       "reduced": [
         0.9,
@@ -198,6 +212,7 @@
       "currency": "GBP",
       "eu_member": false,
       "vat_name": "Value Added Tax",
+      "vat_abbr": "VAT",
       "standard": 20.0,
       "reduced": [
         5.0
@@ -210,6 +225,7 @@
       "currency": "GEL",
       "eu_member": false,
       "vat_name": "დამატებული ღირებულების გადასახადი",
+      "vat_abbr": "დღგ",
       "standard": 18.0,
       "reduced": [],
       "super_reduced": null,
@@ -220,6 +236,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Φόρος Προστιθέμενης Αξίας",
+      "vat_abbr": "ΦΠΑ",
       "standard": 24.0,
       "reduced": [
         6.0,
@@ -234,6 +251,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Porez na dodanu vrijednost",
+      "vat_abbr": "PDV",
       "standard": 25.0,
       "reduced": [
         5.0,
@@ -247,6 +265,7 @@
       "currency": "HUF",
       "eu_member": true,
       "vat_name": "Általános forgalmi adó",
+      "vat_abbr": "ÁFA",
       "standard": 27.0,
       "reduced": [
         5.0,
@@ -260,6 +279,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Value Added Tax",
+      "vat_abbr": "VAT",
       "standard": 23.0,
       "reduced": [
         9.0,
@@ -273,6 +293,7 @@
       "currency": "ISK",
       "eu_member": false,
       "vat_name": "Virðisaukaskattur",
+      "vat_abbr": "VSK",
       "standard": 24.0,
       "reduced": [
         11.0
@@ -285,6 +306,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Imposta sul valore aggiunto",
+      "vat_abbr": "IVA",
       "standard": 22.0,
       "reduced": [
         5.0,
@@ -298,6 +320,7 @@
       "currency": "CHF",
       "eu_member": false,
       "vat_name": "Mehrwertsteuer",
+      "vat_abbr": "MWST",
       "standard": 8.1,
       "reduced": [
         2.6,
@@ -311,6 +334,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Pridėtinės vertės mokestis",
+      "vat_abbr": "PVM",
       "standard": 21.0,
       "reduced": [
         5.0,
@@ -324,6 +348,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Taxe sur la valeur ajoutée",
+      "vat_abbr": "TVA",
       "standard": 17.0,
       "reduced": [
         8.0,
@@ -337,6 +362,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Pievienotās vērtības nodoklis",
+      "vat_abbr": "PVN",
       "standard": 21.0,
       "reduced": [
         5.0,
@@ -350,6 +376,7 @@
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Taxe sur la valeur ajoutée",
+      "vat_abbr": "TVA",
       "standard": 20.0,
       "reduced": [
         5.5,
@@ -363,6 +390,7 @@
       "currency": "MDL",
       "eu_member": false,
       "vat_name": "Taxa pe valoarea adăugată",
+      "vat_abbr": "TVA",
       "standard": 20.0,
       "reduced": [
         8.0
@@ -375,6 +403,7 @@
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Porez na dodatu vrijednost",
+      "vat_abbr": "PDV",
       "standard": 21.0,
       "reduced": [
         7.0,
@@ -388,6 +417,7 @@
       "currency": "MKD",
       "eu_member": false,
       "vat_name": "Данок на додадена вредност",
+      "vat_abbr": "ДДВ",
       "standard": 18.0,
       "reduced": [
         5.0,
@@ -401,6 +431,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Taxxa tal-Valur Miżjud",
+      "vat_abbr": "VAT",
       "standard": 18.0,
       "reduced": [
         5.0,
@@ -414,6 +445,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Belasting over de toegevoegde waarde",
+      "vat_abbr": "btw",
       "standard": 21.0,
       "reduced": [
         9.0
@@ -426,6 +458,7 @@
       "currency": "NOK",
       "eu_member": false,
       "vat_name": "Merverdiavgift",
+      "vat_abbr": "MVA",
       "standard": 25.0,
       "reduced": [
         12.0,
@@ -439,6 +472,7 @@
       "currency": "PLN",
       "eu_member": true,
       "vat_name": "Podatek od towarów i usług",
+      "vat_abbr": "VAT",
       "standard": 23.0,
       "reduced": [
         5.0,
@@ -452,6 +486,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Imposto sobre o Valor Acrescentado",
+      "vat_abbr": "IVA",
       "standard": 23.0,
       "reduced": [
         6.0,
@@ -467,6 +502,7 @@
       "currency": "RON",
       "eu_member": true,
       "vat_name": "Taxa pe valoarea adăugată",
+      "vat_abbr": "TVA",
       "standard": 21.0,
       "reduced": [
         11.0
@@ -479,6 +515,7 @@
       "currency": "RSD",
       "eu_member": false,
       "vat_name": "Porez na dodatu vrednost",
+      "vat_abbr": "PDV",
       "standard": 20.0,
       "reduced": [
         10.0
@@ -491,6 +528,7 @@
       "currency": "SEK",
       "eu_member": true,
       "vat_name": "Mervärdesskatt",
+      "vat_abbr": "moms",
       "standard": 25.0,
       "reduced": [
         6.0,
@@ -504,6 +542,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Davek na dodano vrednost",
+      "vat_abbr": "DDV",
       "standard": 22.0,
       "reduced": [
         5.0,
@@ -517,6 +556,7 @@
       "currency": "EUR",
       "eu_member": true,
       "vat_name": "Daň z pridanej hodnoty",
+      "vat_abbr": "DPH",
       "standard": 23.0,
       "reduced": [
         5.0,
@@ -530,6 +570,7 @@
       "currency": "TRY",
       "eu_member": false,
       "vat_name": "Katma Değer Vergisi",
+      "vat_abbr": "KDV",
       "standard": 20.0,
       "reduced": [
         1.0,
@@ -543,6 +584,7 @@
       "currency": "UAH",
       "eu_member": false,
       "vat_name": "Податок на додану вартість",
+      "vat_abbr": "ПДВ",
       "standard": 20.0,
       "reduced": [
         7.0,
@@ -556,6 +598,7 @@
       "currency": "EUR",
       "eu_member": false,
       "vat_name": "Tatimi mbi Vlerën e Shtuar",
+      "vat_abbr": "TVSH",
       "standard": 18.0,
       "reduced": [
         8.0
