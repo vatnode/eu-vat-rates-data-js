@@ -107,6 +107,12 @@ validateFormat('INVALID')      // → false
 const at = getRate('AT')
 console.log(at.format)   // "ATU + 8 digits"
 console.log(at.pattern)  // "^ATU\\d{8}$"
+
+// Flag emoji from a 2-letter country code — no lookup table, computed from regional indicator symbols
+import { getFlag } from 'eu-vat-rates-data'
+getFlag('FI')  // → '🇫🇮'
+getFlag('DE')  // → '🇩🇪'
+getFlag('XX')  // → '' (empty string for unknown/invalid codes)
 ```
 
 ### CommonJS
