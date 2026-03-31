@@ -199,3 +199,25 @@ export function validateFormat(vatId: string): boolean {
   if (!rate?.pattern) return false
   return new RegExp(rate.pattern).test(vatId.toUpperCase())
 }
+
+/**
+ * Returns the flag emoji for a 2-letter ISO 3166-1 alpha-2 country code.
+ * Computed from regional indicator symbols — no lookup table needed.
+ *
+ * @example
+ * ```ts
+ * getFlag('FI') // '🇫🇮'
+ * getFlag('DE') // '🇩🇪'
+ * getFlag('GB') // '🇬🇧'
+ * ```
+ */
+export function getFlag(code: CountryCode): string
+export function getFlag(code: string): string
+export function getFlag(code: string): string {
+  const upper = code.toUpperCase()
+  if (upper.length !== 2) return ''
+  return String.fromCodePoint(
+    0x1F1E6 + upper.charCodeAt(0) - 65,
+    0x1F1E6 + upper.charCodeAt(1) - 65,
+  )
+}
