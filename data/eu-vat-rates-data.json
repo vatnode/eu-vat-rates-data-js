@@ -1,5 +1,5 @@
 {
-  "version": "2026-03-31",
+  "version": "2026-04-01",
   "source": "European Commission TEDB",
   "rates": {
     "AD": {
@@ -15,8 +15,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "1 letter + 7 digits + 1 letter",
-      "pattern": "^[A-Z]\\d{7}[A-Z]$"
+      "format": "AD + alphanumeric",
+      "pattern": null
     },
     "AL": {
       "country": "Albania",
@@ -31,8 +31,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "letter (J/K/L) + 8 digits + 1 letter",
-      "pattern": "^[JKL]\\d{8}[A-Z]$"
+      "format": "AL + 1 letter + 8 digits + 1 letter",
+      "pattern": "^AL[A-Z]\\d{8}[A-Z]$"
     },
     "AT": {
       "country": "Austria",
@@ -61,8 +61,8 @@
       "reduced": [],
       "super_reduced": null,
       "parking": null,
-      "format": "12 digits",
-      "pattern": "^\\d{12}$"
+      "format": "BA + alphanumeric",
+      "pattern": null
     },
     "BE": {
       "country": "Belgium",
@@ -262,8 +262,8 @@
       "reduced": [],
       "super_reduced": null,
       "parking": null,
-      "format": "9 digits",
-      "pattern": "^\\d{9}$"
+      "format": "GE + alphanumeric",
+      "pattern": null
     },
     "GR": {
       "country": "Greece",
@@ -342,8 +342,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "6 digits",
-      "pattern": "^\\d{6}$"
+      "format": "IS + 5–6 digits",
+      "pattern": "^IS\\d{5,6}$"
     },
     "IT": {
       "country": "Italy",
@@ -374,8 +374,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "CHE + 9 digits",
-      "pattern": "^CHE\\d{9}$"
+      "format": "LI + alphanumeric",
+      "pattern": null
     },
     "LT": {
       "country": "Lithuania",
@@ -438,8 +438,8 @@
       ],
       "super_reduced": 2.1,
       "parking": null,
-      "format": "FR + 2 alphanumeric + 9 digits",
-      "pattern": "^FR[A-HJ-NP-Z0-9]{2}\\d{9}$"
+      "format": "MC + alphanumeric",
+      "pattern": null
     },
     "MD": {
       "country": "Moldova",
@@ -453,8 +453,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "7 digits",
-      "pattern": "^\\d{7}$"
+      "format": "MD + alphanumeric",
+      "pattern": null
     },
     "ME": {
       "country": "Montenegro",
@@ -469,8 +469,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "8 digits",
-      "pattern": "^\\d{8}$"
+      "format": "ME + 8 digits",
+      "pattern": "^ME\\d{8}$"
     },
     "MK": {
       "country": "North Macedonia",
@@ -485,8 +485,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "13 digits",
-      "pattern": "^\\d{13}$"
+      "format": "MK + 13 digits",
+      "pattern": "^MK\\d{13}$"
     },
     "MT": {
       "country": "Malta",
@@ -596,8 +596,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "9 digits",
-      "pattern": "^\\d{9}$"
+      "format": "RS + 9 digits",
+      "pattern": "^RS\\d{9}$"
     },
     "SE": {
       "country": "Sweden",
@@ -660,8 +660,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "10 digits",
-      "pattern": "^\\d{10}$"
+      "format": "TR + 10 digits",
+      "pattern": "^TR\\d{10}$"
     },
     "UA": {
       "country": "Ukraine",
@@ -676,8 +676,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "12 digits",
-      "pattern": "^\\d{12}$"
+      "format": "UA + 12 digits",
+      "pattern": "^UA\\d{12}$"
     },
     "XK": {
       "country": "Kosovo",
@@ -691,8 +691,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "9 digits",
-      "pattern": "^\\d{9}$"
+      "format": "XK + alphanumeric",
+      "pattern": null
     }
   }
 }
