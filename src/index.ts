@@ -55,7 +55,7 @@ export interface VatRate {
   /** Human-readable format description (e.g. "ATU + 8 digits"). */
   format: string
   /** Regex pattern string for format validation (without slashes), or null for countries without a standardised format. */
-  pattern: string | null
+  pattern: string
 }
 
 /** Shape of the bundled dataset JSON. */

@@ -157,7 +157,7 @@ interface VatRate {
   super_reduced: number | null // null when not applicable
   parking:       number | null // null when not applicable
   format:        string        // "FI + 8 digits" — human-readable VAT number format
-  pattern:       string | null // "^FI\\d{8}$" — regex for format validation, null if no standard
+  pattern:       string        // "^FI\\d{8}$" — regex for format validation, always present
 }
 ```
 
