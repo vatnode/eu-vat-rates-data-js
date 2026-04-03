@@ -1,5 +1,5 @@
 {
-  "version": "2026-04-02",
+  "version": "2026-04-03",
   "source": "European Commission TEDB",
   "rates": {
     "AD": {
@@ -15,8 +15,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "AD + 1 letter + 6 digits + 1 letter",
-      "pattern": "^AD[A-Z]\\d{6}[A-Z]$"
+      "format": "1 letter + 6 digits + 1 letter",
+      "pattern": "^[A-Z]\\d{6}[A-Z]$"
     },
     "AL": {
       "country": "Albania",
@@ -31,8 +31,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "AL + 1 letter + 8 digits + 1 letter",
-      "pattern": "^AL[A-Z]\\d{8}[A-Z]$"
+      "format": "1 letter + 8 digits + 1 letter",
+      "pattern": "^[A-Z]\\d{8}[A-Z]$"
     },
     "AT": {
       "country": "Austria",
@@ -61,8 +61,8 @@
       "reduced": [],
       "super_reduced": null,
       "parking": null,
-      "format": "BA + 12 digits",
-      "pattern": "^BA\\d{12}$"
+      "format": "12 digits",
+      "pattern": "^\\d{12}$"
     },
     "BE": {
       "country": "Belgium",
@@ -82,7 +82,7 @@
     },
     "BG": {
       "country": "Bulgaria",
-      "currency": "BGN",
+      "currency": "EUR",
       "eu_member": true,
       "vat_name": "Данък върху добавената стойност",
       "vat_abbr": "ДДС",
@@ -108,8 +108,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "CHE + 9 digits (+ MWST/TVA/IVA)",
-      "pattern": "^CHE\\d{9}(MWST|TVA|IVA)?$"
+      "format": "CHE-NNN.NNN.NNN (+ MWST/TVA/IVA)",
+      "pattern": "^CHE-?\\d{3}\\.?\\d{3}\\.?\\d{3}[ ]?(MWST|TVA|IVA)?$"
     },
     "CY": {
       "country": "Cyprus",
@@ -249,7 +249,7 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "GB + 9 or 12 digits (or GD/HA + 3 digits)",
+      "format": "GB + 9 digits, 12 digits, or GD/HA + 3 digits",
       "pattern": "^GB(\\d{9}|\\d{12}|GD\\d{3}|HA\\d{3})$"
     },
     "GE": {
@@ -262,8 +262,8 @@
       "reduced": [],
       "super_reduced": null,
       "parking": null,
-      "format": "GE + 9 digits",
-      "pattern": "^GE\\d{9}$"
+      "format": "9 digits",
+      "pattern": "^\\d{9}$"
     },
     "GR": {
       "country": "Greece",
@@ -322,7 +322,6 @@
       "vat_abbr": "VAT",
       "standard": 23.0,
       "reduced": [
-        0.0,
         9.0,
         13.5
       ],
@@ -343,8 +342,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "IS + 5–6 digits",
-      "pattern": "^IS\\d{5,6}$"
+      "format": "5–6 digits",
+      "pattern": "^\\d{5,6}$"
     },
     "IT": {
       "country": "Italy",
@@ -375,8 +374,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "CHE + 9 digits (uses Swiss VAT system)",
-      "pattern": "^CHE\\d{9}(MWST|TVA|IVA)?$"
+      "format": "5 digits",
+      "pattern": "^\\d{5}$"
     },
     "LT": {
       "country": "Lithuania",
@@ -439,7 +438,7 @@
       ],
       "super_reduced": 2.1,
       "parking": null,
-      "format": "FR + 2 alphanumeric + 9 digits (uses French VAT system)",
+      "format": "FR + 2 alphanumeric + 9 digits",
       "pattern": "^FR[A-HJ-NP-Z0-9]{2}\\d{9}$"
     },
     "MD": {
@@ -454,8 +453,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "MD + 13 digits",
-      "pattern": "^MD\\d{13}$"
+      "format": "7 digits",
+      "pattern": "^\\d{7}$"
     },
     "ME": {
       "country": "Montenegro",
@@ -470,8 +469,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "ME + 8 digits",
-      "pattern": "^ME\\d{8}$"
+      "format": "8 digits",
+      "pattern": "^\\d{8}$"
     },
     "MK": {
       "country": "North Macedonia",
@@ -497,7 +496,6 @@
       "vat_abbr": "VAT",
       "standard": 18.0,
       "reduced": [
-        0.0,
         5.0,
         7.0
       ],
@@ -534,8 +532,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "NO + 9 digits + MVA",
-      "pattern": "^NO\\d{9}MVA$"
+      "format": "9 digits + MVA",
+      "pattern": "^\\d{9}MVA$"
     },
     "PL": {
       "country": "Poland",
@@ -598,8 +596,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "RS + 9 digits",
-      "pattern": "^RS\\d{9}$"
+      "format": "9 digits",
+      "pattern": "^\\d{9}$"
     },
     "SE": {
       "country": "Sweden",
@@ -614,8 +612,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "SE + 12 digits",
-      "pattern": "^SE\\d{12}$"
+      "format": "SE + 10 digits + 01",
+      "pattern": "^SE\\\\d{10}01$"
     },
     "SI": {
       "country": "Slovenia",
@@ -662,8 +660,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "TR + 10 digits",
-      "pattern": "^TR\\d{10}$"
+      "format": "10 digits",
+      "pattern": "^\\d{10}$"
     },
     "UA": {
       "country": "Ukraine",
@@ -678,8 +676,23 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "UA + 12 digits",
-      "pattern": "^UA\\d{12}$"
+      "format": "9 digits",
+      "pattern": "^\\d{9}$"
+    },
+    "XI": {
+      "country": "Northern Ireland",
+      "currency": "GBP",
+      "eu_member": false,
+      "vat_name": "Value Added Tax",
+      "vat_abbr": "VAT",
+      "standard": 20.0,
+      "reduced": [
+        5.0
+      ],
+      "super_reduced": null,
+      "parking": null,
+      "format": "XI + 9 digits, 12 digits, or GD/HA + 3 digits",
+      "pattern": "^XI(\\d{9}|\\d{12}|(GD|HA)\\d{3})$"
     },
     "XK": {
       "country": "Kosovo",
@@ -693,8 +706,8 @@
       ],
       "super_reduced": null,
       "parking": null,
-      "format": "XK + 9 digits",
-      "pattern": "^XK\\d{9}$"
+      "format": "9 digits",
+      "pattern": "^\\d{9}$"
     }
   }
 }
