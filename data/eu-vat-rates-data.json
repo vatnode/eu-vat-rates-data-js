@@ -613,7 +613,7 @@
       "super_reduced": null,
       "parking": null,
       "format": "SE + 10 digits + 01",
-      "pattern": "^SE\\\\d{10}01$"
+      "pattern": "^SE\\d{10}01$"
     },
     "SI": {
       "country": "Slovenia",
