@@ -4,7 +4,7 @@
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates-data.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates-data.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-VAT rates for **44 European countries** — all EU-27 member states plus Norway, Switzerland, the United Kingdom, and more. EU rates sourced from the European Commission TEDB and checked daily. Published automatically when rates change.
+VAT rates for **45 European countries** — all EU-27 member states plus Norway, Switzerland, the United Kingdom, and more. EU rates sourced from the European Commission TEDB and checked daily. Published automatically when rates change.
 
 - Standard, reduced, super-reduced, and parking rates
 - `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
@@ -38,7 +38,7 @@ VAT rates for **44 European countries** — all EU-27 member states plus Norway,
 | [eu-vat](https://www.npmjs.com/package/eu-vat) | ❌ last 2018 | ❌ | external API |
 | [vat-calculator](https://www.npmjs.com/package/vat-calculator) | ❌ last 2015 | ❌ | hardcoded |
 
-**Two key differences:** (1) every other package relies on manual updates or is abandoned — `eu-vat-rates-data` publishes automatically when rates change, same day. (2) This is the only package that includes VAT number format descriptions and regex patterns for all 44 countries, with a built-in `validateFormat()` function — no API key or network call needed.
+**Two key differences:** (1) every other package relies on manual updates or is abandoned — `eu-vat-rates-data` publishes automatically when rates change, same day. (2) This is the only package that includes VAT number format descriptions and regex patterns for all 45 countries, with a built-in `validateFormat()` function — no API key or network call needed.
 
 ---
 
@@ -83,12 +83,12 @@ if (isEUMember(userInput)) {
   const rate = getRate(userInput) // type narrowed to EUMemberCode
 }
 
-// Dataset membership check — true for any of the 44 European countries
+// Dataset membership check — true for any of the 45 European countries
 if (isKnownCountry(userInput)) {
   const rate = getRate(userInput) // type narrowed to CountryCode
 }
 
-// All 44 countries at once
+// All 45 countries at once
 const all = getAllRates()
 Object.entries(all).forEach(([code, rate]) => {
   console.log(`${code}: ${rate.standard}%`)
@@ -233,7 +233,7 @@ Additional European countries:
 
 `AD` `AL` `BA` `CH` `GB` `GE` `IS` `LI` `MC` `MD` `ME` `MK` `NO` `RS` `TR` `UA` `XK`
 
-44 countries total.
+45 countries total.
 
 ---
 
