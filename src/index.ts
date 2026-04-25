@@ -150,7 +150,7 @@ export function isEUMember(code: string): code is EUMemberCode {
 
 /**
  * Returns `true` when the given string is a country code present in the
- * dataset (all 44 European countries).
+ * dataset (all 45 European countries).
  *
  * Acts as a TypeScript type guard narrowing `string` to `CountryCode`.
  * Use `isEUMember` instead to check EU membership specifically.

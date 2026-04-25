@@ -14,8 +14,8 @@ test('NO is not an EU member', () => {
   assert.equal(isEUMember('NO'), false)
 })
 
-test('dataset contains 44 countries', () => {
-  assert.equal(Object.keys(getAllRates()).length, 44)
+test('dataset contains 45 countries', () => {
+  assert.equal(Object.keys(getAllRates()).length, 45)
 })
 
 test('all standard rates are greater than zero', () => {
