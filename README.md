@@ -42,6 +42,28 @@ VAT rates for **45 European countries** — all EU-27 member states plus Norway,
 
 ---
 
+## Need live VIES validation?
+
+This package gives you VAT **rates** and **format checks** for free, offline, in your code. It does **not** call VIES — `validateFormat()` only checks the shape of a VAT number, not whether it actually exists.
+
+For **live VIES validation** — confirming a VAT ID is real, pulling the registered company name and address, and getting a VIES consultation number (audit-grade proof of validation) — there's **[vatnode](https://vatnode.dev)**:
+
+- Live VIES validation, with national-database fallback when VIES is down
+- Registered company name, address, registration date
+- VIES consultation number for compliance and audit trails
+- Webhooks for VAT status changes
+- Official [MCP server](https://www.npmjs.com/package/vatnode-mcp) so AI agents (Claude, Cursor, ChatGPT) can validate VAT IDs directly
+- Free tier — no credit card needed
+
+```bash
+curl https://api.vatnode.dev/v1/vat/IE6388047V \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+[**Get a free API key →**](https://vatnode.dev)
+
+---
+
 ## Installation
 
 ```bash
