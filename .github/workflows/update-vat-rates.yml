@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
 
     steps:
       - uses: actions/checkout@v5
@@ -68,9 +69,7 @@ jobs:
 
       - name: Publish to npm
         if: steps.diff.outputs.rates_changed == 'true' || github.event.inputs.force_publish == 'true'
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
 
       - name: Commit and push
         run: |
