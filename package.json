@@ -1,6 +1,6 @@
 {
   "name": "eu-vat-rates-data",
-  "version": "2026.5.20",
+  "version": "2026.7.1",
   "description": "VAT rates for 45 European countries — EU-27 plus Norway, Switzerland, UK, and more. Updated daily. From vatnode.dev — live VIES validation via API.",
   "type": "module",
   "main": "./dist/index.cjs",
