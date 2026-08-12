@@ -33,12 +33,14 @@ VAT rates for **45 European countries** — all EU-27 member states plus Norway,
 | Package | Auto-updates | VAT number format | Source |
 |---|---|---|---|
 | **eu-vat-rates-data** | ✅ daily (GitHub Actions) | ✅ `format` + `pattern` + `validateFormat()` | EC TEDB (official) |
-| [sales-tax](https://www.npmjs.com/package/sales-tax) | ❌ manual | ❌ | hardcoded |
-| [eu-vat-rates](https://www.npmjs.com/package/eu-vat-rates) | ❌ last 2023 | ❌ | hardcoded |
-| [eu-vat](https://www.npmjs.com/package/eu-vat) | ❌ last 2018 | ❌ | external API |
-| [vat-calculator](https://www.npmjs.com/package/vat-calculator) | ❌ last 2015 | ❌ | hardcoded |
+| `sales-tax` | ❌ manual | ❌ | hardcoded |
+| `eu-vat-rates` | ❌ last 2023 | ❌ | hardcoded |
+| `eu-vat` | ❌ last 2018 | ❌ | external API |
+| `vat-calculator` | ❌ last 2015 | ❌ | hardcoded |
 
-**Two key differences:** (1) every other package relies on manual updates or is abandoned — `eu-vat-rates-data` publishes automatically when rates change, same day. (2) This is the only package that includes VAT number format descriptions and regex patterns for all 45 countries, with a built-in `validateFormat()` function — no API key or network call needed.
+**Two key differences:** (1) the packages above depend on someone remembering to update them, and most have not been touched in years — `eu-vat-rates-data` publishes the same day a rate changes, because a scheduled job does the checking. (2) VAT number format descriptions and regex patterns ship with the rates for all 45 countries, with a built-in `validateFormat()` function — no API key, no network call.
+
+The other packages are listed by name so you can look them up yourself; the comparison reflects their published state at the time of writing.
 
 ---
 
@@ -46,7 +48,7 @@ VAT rates for **45 European countries** — all EU-27 member states plus Norway,
 
 This package gives you VAT **rates** and **format checks** for free, offline, in your code. It does **not** call VIES — `validateFormat()` only checks the shape of a VAT number, not whether it actually exists.
 
-For **live VIES validation** — confirming a VAT ID is real, pulling the registered company name and address, and getting a VIES consultation number (audit-grade proof of validation) — there's **[vatnode](https://vatnode.dev)**:
+For **live VIES validation** — confirming a VAT ID is real, pulling the registered company name and address, and getting the VIES consultation number as your reference for the check — there's **[vatnode](https://vatnode.dev)**:
 
 - Live VIES validation, with national-database fallback when VIES is down
 - Registered company name, address, registration date
@@ -217,9 +219,11 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 
 ## Data source & update frequency
 
+How the daily check works, and what changed when: [vatnode.dev/data](https://vatnode.dev/data?ref=rates-readme-js).
+
 Rates are fetched from the **European Commission Taxes in Europe Database (TEDB)** via its official SOAP web service:
 
-- Refreshed: **daily at 07:00 UTC**
+- Checked against the source: **daily at 07:00 UTC**, updated on any change
 - Published: new npm version only when actual rates change (not on date-only updates)
 - History: `git log -- data/eu-vat-rates-data.json` gives a full audit trail of VAT changes across the EU
 
