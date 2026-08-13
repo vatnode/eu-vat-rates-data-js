@@ -167,6 +167,45 @@ console.log(rates.DE.standard) // 19
 
 ---
 
+## Example: charging VAT on an invoice
+
+Rates on their own rarely answer the question you actually have, which is what
+to put on the invoice. Two rules cover most of it: charge the buyer's domestic
+rate, unless the sale is cross-border B2B inside the EU, where the reverse
+charge applies and you invoice 0%.
+
+```js
+import { getStandardRate, validateFormat } from 'eu-vat-rates-data'
+
+// Money in minor units (cents). Never floats.
+function invoiceTotal({ netCents, sellerCountry, buyerCountry, buyerVatId }) {
+  const isCrossBorderB2B =
+    buyerCountry !== sellerCountry && Boolean(buyerVatId) && validateFormat(buyerVatId)
+
+  if (isCrossBorderB2B) {
+    return { vatCents: 0, totalCents: netCents, reverseCharge: true }
+  }
+
+  const rate = getStandardRate(buyerCountry)
+  const vatCents = Math.round((netCents * rate) / 100)
+  return { vatCents, totalCents: netCents + vatCents, reverseCharge: false }
+}
+
+// Domestic sale in Finland — 25.5%
+invoiceTotal({ netCents: 10000, sellerCountry: 'FI', buyerCountry: 'FI' })
+// → { vatCents: 2550, totalCents: 12550, reverseCharge: false }
+
+// Finnish seller, German business buyer — reverse charge
+invoiceTotal({ netCents: 10000, sellerCountry: 'FI', buyerCountry: 'DE', buyerVatId: 'DE123456789' })
+// → { vatCents: 0, totalCents: 10000, reverseCharge: true }
+```
+
+`validateFormat()` only checks the shape of the number. Applying the reverse charge
+requires the buyer to actually be VAT-registered, which is a VIES lookup — see
+above.
+
+---
+
 ## Data structure
 
 ```ts
