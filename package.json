@@ -47,10 +47,14 @@
     "typescript"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/vatnode/eu-vat-rates-data-js#readme",
+  "author": "Iurii Rogulia <iurii@rogulia.fi>",
+  "homepage": "https://vatnode.dev/vat-rates?ref=rates-npm",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vatnode/eu-vat-rates-data-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vatnode/eu-vat-rates-data-js/issues"
   },
   "publishConfig": {
     "access": "public"
