@@ -194,7 +194,10 @@ export const dataVersion: string = dataset.version
  */
 export function validateFormat(vatId: string): boolean {
   if (vatId.length < 2) return false
-  const code = vatId.slice(0, 2).toUpperCase()
+  const prefix = vatId.slice(0, 2).toUpperCase()
+  // Greek VAT numbers carry the VIES prefix EL, while the dataset keys Greece
+  // under its ISO code GR.
+  const code = prefix === 'EL' ? 'GR' : prefix
   const rate = dataset.rates[code as CountryCode]
   if (!rate?.pattern) return false
   return new RegExp(rate.pattern).test(vatId.toUpperCase())

@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { getRate, getAllRates, isEUMember, dataVersion } from './dist/index.js'
+import { getRate, getAllRates, isEUMember, dataVersion, validateFormat } from './dist/index.js'
 
 test('DE is an EU member', () => {
   assert.equal(isEUMember('DE'), true)
@@ -42,4 +42,23 @@ test('dataVersion matches YYYY-MM-DD format', () => {
 
 test('unknown country returns undefined', () => {
   assert.equal(getRate('XX'), undefined)
+})
+
+test('validateFormat accepts well-formed VAT numbers', () => {
+  assert.equal(validateFormat('ATU12345678'), true)
+  assert.equal(validateFormat('DE123456789'), true)
+  assert.equal(validateFormat('atu12345678'), true)
+})
+
+test('validateFormat rejects malformed input', () => {
+  assert.equal(validateFormat(''), false)
+  assert.equal(validateFormat('INVALID'), false)
+  assert.equal(validateFormat('DE12'), false)
+})
+
+// Greek VAT numbers carry the VIES prefix EL while the dataset keys Greece as GR.
+test('validateFormat handles the Greek EL prefix', () => {
+  assert.equal(validateFormat('EL123456789'), true)
+  assert.equal(validateFormat('el123456789'), true)
+  assert.equal(validateFormat('EL12345678'), false)
 })
