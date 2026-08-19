@@ -236,6 +236,7 @@ Standard ISO 3166-1 alpha-2, with one EU convention: Greece is `GR` (TEDB intern
 {
   "version": "2026-03-31",
   "source": "European Commission TEDB",
+  "publisher": { "name": "vatnode.dev", "url": "https://vatnode.dev" },
   "rates": {
     "FI": {
       "country": "Finland",
