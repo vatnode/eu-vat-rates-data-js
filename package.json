@@ -1,6 +1,6 @@
 {
   "name": "eu-vat-rates-data",
-  "version": "2026.8.20",
+  "version": "2026.8.23",
   "description": "Official-source European VAT rates for 45 jurisdictions. Daily-checked data, TypeScript types, offline JSON, and VAT number format validation.",
   "type": "module",
   "main": "./dist/index.cjs",
