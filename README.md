@@ -1,10 +1,14 @@
 # eu-vat-rates-data
 
 [![npm version](https://img.shields.io/npm/v/eu-vat-rates-data)](https://www.npmjs.com/package/eu-vat-rates-data)
+[![npm downloads](https://img.shields.io/npm/dw/eu-vat-rates-data)](https://www.npmjs.com/package/eu-vat-rates-data)
+[![Test](https://github.com/vatnode/eu-vat-rates-data-js/actions/workflows/test.yml/badge.svg)](https://github.com/vatnode/eu-vat-rates-data-js/actions/workflows/test.yml)
 [![Last updated](https://img.shields.io/github/last-commit/vatnode/eu-vat-rates-data-js?path=data%2Feu-vat-rates-data.json&label=last%20updated)](https://github.com/vatnode/eu-vat-rates-data-js/commits/main/data/eu-vat-rates-data.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 VAT rates for **45 European countries** — all EU-27 member states plus Norway, Switzerland, the United Kingdom, and more. EU rates sourced from the European Commission TEDB and checked daily. Published automatically when rates change.
+
+Part of **[VATNode VAT Rates](https://vatnode.dev/vat-rates)** · [canonical dataset](https://github.com/vatnode/eu-vat-rates-data) · [methodology](https://vatnode.dev/data) · other languages: [Python](https://github.com/vatnode/eu-vat-rates-data-python), [PHP](https://github.com/vatnode/eu-vat-rates-data-php), [Go](https://github.com/vatnode/eu-vat-rates-data-go), [Ruby](https://github.com/vatnode/eu-vat-rates-data-ruby)
 
 - Standard, reduced, super-reduced, and parking rates
 - `eu_member` flag on every country — `true` for EU-27, `false` for non-EU
@@ -30,17 +34,7 @@ VAT rates for **45 European countries** — all EU-27 member states plus Norway,
 
 ## Why eu-vat-rates-data?
 
-| Package | Auto-updates | VAT number format | Source |
-|---|---|---|---|
-| **eu-vat-rates-data** | ✅ daily (GitHub Actions) | ✅ `format` + `pattern` + `validateFormat()` | EC TEDB (official) |
-| `sales-tax` | ❌ manual | ❌ | hardcoded |
-| `eu-vat-rates` | ❌ last 2023 | ❌ | hardcoded |
-| `eu-vat` | ❌ last 2018 | ❌ | external API |
-| `vat-calculator` | ❌ last 2015 | ❌ | hardcoded |
-
-**Two key differences:** (1) the packages above depend on someone remembering to update them, and most have not been touched in years — `eu-vat-rates-data` publishes the same day a rate changes, because a scheduled job does the checking. (2) VAT number format descriptions and regex patterns ship with the rates for all 45 countries, with a built-in `validateFormat()` function — no API key, no network call.
-
-The other packages are listed by name so you can look them up yourself; the comparison reflects their published state at the time of writing.
+Unlike hand-maintained constants, the EU-27 data is checked daily against an official source. Unlike a runtime tax API, the package works offline and remains reproducible when its version is pinned. It includes multiple rate types, TypeScript declarations, VAT-number format metadata, and standard-rate history through the canonical dataset.
 
 ---
 
@@ -169,20 +163,16 @@ console.log(rates.DE.standard) // 19
 
 ## Example: charging VAT on an invoice
 
-Rates on their own rarely answer the question you actually have, which is what
-to put on the invoice. Two rules cover most of it: charge the buyer's domestic
-rate, unless the sale is cross-border B2B inside the EU, where the reverse
-charge applies and you invoice 0%.
+Rates alone do not determine invoice treatment. Resolve place-of-supply,
+customer status, category, exemptions, and any reverse-charge eligibility in
+your tax logic first; then use the dataset for the applicable numeric rate.
 
 ```js
-import { getStandardRate, validateFormat } from 'eu-vat-rates-data'
+import { getStandardRate } from 'eu-vat-rates-data'
 
 // Money in minor units (cents). Never floats.
-function invoiceTotal({ netCents, sellerCountry, buyerCountry, buyerVatId }) {
-  const isCrossBorderB2B =
-    buyerCountry !== sellerCountry && Boolean(buyerVatId) && validateFormat(buyerVatId)
-
-  if (isCrossBorderB2B) {
+function invoiceTotal({ netCents, buyerCountry, reverseChargeEligible = false }) {
+  if (reverseChargeEligible) {
     return { vatCents: 0, totalCents: netCents, reverseCharge: true }
   }
 
@@ -192,17 +182,16 @@ function invoiceTotal({ netCents, sellerCountry, buyerCountry, buyerVatId }) {
 }
 
 // Domestic sale in Finland — 25.5%
-invoiceTotal({ netCents: 10000, sellerCountry: 'FI', buyerCountry: 'FI' })
+invoiceTotal({ netCents: 10000, buyerCountry: 'FI' })
 // → { vatCents: 2550, totalCents: 12550, reverseCharge: false }
 
 // Finnish seller, German business buyer — reverse charge
-invoiceTotal({ netCents: 10000, sellerCountry: 'FI', buyerCountry: 'DE', buyerVatId: 'DE123456789' })
+invoiceTotal({ netCents: 10000, buyerCountry: 'DE', reverseChargeEligible: true })
 // → { vatCents: 0, totalCents: 10000, reverseCharge: true }
 ```
 
-`validateFormat()` only checks the shape of the number. Applying the reverse charge
-requires the buyer to actually be VAT-registered, which is a VIES lookup — see
-above.
+`reverseChargeEligible` must come from applicable tax logic and evidence. `validateFormat()`
+only checks a number's shape; it does not establish registration or eligibility.
 
 ---
 

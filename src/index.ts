@@ -4,7 +4,7 @@ import data from '../data/eu-vat-rates-data.json'
 // Types
 // ---------------------------------------------------------------------------
 
-/** ISO 3166-1 alpha-2 codes for all European countries in the dataset (EU-27 + 17 non-EU). */
+/** Country codes for all jurisdictions in the dataset (EU-27 + 18 non-EU/special VAT jurisdictions). */
 export type CountryCode =
   // EU-27
   | 'AT' | 'BE' | 'BG' | 'CY' | 'CZ' | 'DE' | 'DK' | 'EE'
