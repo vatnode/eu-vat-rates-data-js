@@ -46,7 +46,7 @@ For **live VIES validation** — confirming a VAT ID is real, pulling the regist
 
 - Live VIES validation, with national-database fallback when VIES is down
 - Registered company name, address, registration date
-- VIES consultation number for compliance and audit trails
+- VIES consultation number — a timestamped record that the check was made against VIES
 - Webhooks for VAT status changes
 - Official [MCP server](https://www.npmjs.com/package/vatnode-mcp) so AI agents (Claude, Cursor, ChatGPT) can validate VAT IDs directly
 - Free tier — no credit card needed
