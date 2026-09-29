@@ -56,6 +56,31 @@ export interface VatRate {
   format: string
   /** Regex pattern string for format validation (without slashes), or null for countries without a standardised format. */
   pattern: string
+  /** Names (not numbers) of the company registrar, register and identifiers. */
+  identifiers: Identifiers
+}
+
+/** A name and its abbreviation in one language. */
+export interface NameInLanguage {
+  name: string
+  abbr: string | null
+}
+
+/** Keyed by ISO 639-1 language code: every official language, plus `en`. */
+export type LocalizedName = Record<string, NameInLanguage>
+
+/** `null` means no official name could be confirmed. */
+export interface Identifiers {
+  /** Body that keeps the company register (e.g. "Kamer van Koophandel"). */
+  registry_authority_name: LocalizedName | null
+  /** The company register (e.g. "Handelsregister"). */
+  registry_name: LocalizedName | null
+  /** The number an entity gets in that register (e.g. "KVK-nummer"). */
+  registry_code_name: LocalizedName | null
+  /** Business tax identification number (e.g. "RSIN"). */
+  tax_id_name: LocalizedName | null
+  /** VAT identification number (e.g. "btw-identificatienummer"). */
+  vat_id_name: LocalizedName | null
 }
 
 /** Shape of the bundled dataset JSON. */

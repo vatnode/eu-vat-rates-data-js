@@ -210,8 +210,11 @@ interface VatRate {
   parking:       number | null // null when not applicable
   format:        string        // "FI + 8 digits" — human-readable VAT number format
   pattern:       string        // "^FI\\d{8}$" — regex for format validation, always present
+  identifiers:   Identifiers   // names of the registrar, register and identifiers — see below
 }
 ```
+
+`identifiers` holds names, never numbers: `registry_authority_name`, `registry_name`, `registry_code_name`, `tax_id_name` and `vat_id_name` — the company registrar, the company register, the register number, the business tax number and the VAT identification number. Each is keyed by ISO 639-1 language (every official language, plus `en`) with `{ name, abbr }` per language; for Finland `registry_code_name` is `{ fi: { name: "Y-tunnus" }, sv: { name: "FO-nummer" }, en: { name: "Business ID" } }` (abbr omitted here). `null` means no official name could be confirmed.
 
 `reduced` may contain rates for special territories (e.g. French DOM departments, Azores/Madeira for Portugal, Canary Islands for Spain). All values come verbatim from EC TEDB.
 
