@@ -8,7 +8,7 @@ hand-maintained fields.
 
 ## 2026-09-29
 
-- **added:** `identifiers` on every country — `registry_authority_name`, `registry_name`, `registry_code_name`, `tax_id_name` and `vat_id_name`, keyed by language (every official language plus `en`), each `{ name, abbr }`. Names only, never numbers; `null` where no official name could be confirmed. Types `Identifiers`, `LocalizedName` and `NameInLanguage` exported.
+- **added:** `identifiers` on every country — `registry_authority_name`, `registry_name`, `registry_code_name`, `tax_id_name` and `vat_id_name`, keyed by language (every official language plus `en`), the name as the value. Names only, never numbers; `null` where no official name could be confirmed. Types `Identifiers` and `LocalizedName` exported.
 
 ## 2026-04-25
 

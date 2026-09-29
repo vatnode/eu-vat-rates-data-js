@@ -60,14 +60,8 @@ export interface VatRate {
   identifiers: Identifiers
 }
 
-/** A name and its abbreviation in one language. */
-export interface NameInLanguage {
-  name: string
-  abbr: string | null
-}
-
 /** Keyed by ISO 639-1 language code: every official language, plus `en`. */
-export type LocalizedName = Record<string, NameInLanguage>
+export type LocalizedName = Record<string, string>
 
 /** `null` means no official name could be confirmed. */
 export interface Identifiers {
