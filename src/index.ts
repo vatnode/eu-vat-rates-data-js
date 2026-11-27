@@ -200,15 +200,16 @@ export const dataVersion: string = dataset.version
  * country (determined by the leading 2-letter country code).
  *
  * Validation is done locally using the bundled regex patterns — no API key
- * or network call required. Returns `false` for countries that have no
- * standardised format (AD, BA, GE, LI, MC, MD, XK) or for unknown codes.
+ * or network call required. Returns `false` for unknown codes and for `MC`
+ * (Monaco numbers use the French `FR` prefix).
  *
  * @example
  * ```ts
  * validateFormat('ATU12345678')  // true
  * validateFormat('DE123456789')  // true
+ * validateFormat('NO123456789MVA') // true
  * validateFormat('INVALID')      // false
- * validateFormat('AD12345')      // false — Andorra has no standard format
+ * validateFormat('AD12345')      // false — malformed
  * ```
  */
 export function validateFormat(vatId: string): boolean {
@@ -219,7 +220,10 @@ export function validateFormat(vatId: string): boolean {
   const code = prefix === 'EL' ? 'GR' : prefix
   const rate = dataset.rates[code as CountryCode]
   if (!rate?.pattern) return false
-  return new RegExp(rate.pattern).test(vatId.toUpperCase())
+  // Most patterns carry the country prefix (`^DE\d{9}$`); the rest (NO, TR, UA, ...)
+  // describe the number without it, so they are tested against the part after the code.
+  const subject = /^\^[A-Z]{2}/.test(rate.pattern) ? vatId : vatId.slice(2)
+  return new RegExp(rate.pattern).test(subject.toUpperCase())
 }
 
 /**

@@ -6,6 +6,10 @@ history of [`data/eu-vat-rates-data.json`](https://github.com/vatnode/eu-vat-rat
 This file records changes to the package API, the data format, and corrections to
 hand-maintained fields.
 
+## 2026-11-27
+
+- **fixed:** `validateFormat` returned `false` for every number of AL, IS, ME, NO, RS, TR, UA (and AD, BA, GE, LI, MD, XK), because their patterns describe the number without the country prefix and the whole input was tested against them. The part after the country code is now tested for those countries.
+
 ## 2026-09-29
 
 - **added:** `identifiers` on every country — `registry_authority_name`, `registry_name`, `registry_code_name`, `tax_id_name` and `vat_id_name`, keyed by language (every official language plus `en`), the name as the value. Names only, never numbers; `null` where no official name could be confirmed. Types `Identifiers` and `LocalizedName` exported.

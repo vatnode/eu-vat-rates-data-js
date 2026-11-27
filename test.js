@@ -56,6 +56,22 @@ test('validateFormat rejects malformed input', () => {
   assert.equal(validateFormat('DE12'), false)
 })
 
+// Patterns for NO, TR, UA, ... describe the number without the country prefix.
+test('validateFormat handles patterns without a country prefix', () => {
+  assert.equal(validateFormat('NO123456789MVA'), true)
+  assert.equal(validateFormat('no123456789mva'), true)
+  assert.equal(validateFormat('TR1234567890'), true)
+  assert.equal(validateFormat('UA123456789'), true)
+  assert.equal(validateFormat('RS123456789'), true)
+  assert.equal(validateFormat('ME12345678'), true)
+  assert.equal(validateFormat('IS12345'), true)
+  assert.equal(validateFormat('ALJ12345678K'), true)
+  assert.equal(validateFormat('NO123456789'), false)
+  assert.equal(validateFormat('123456789MVA'), false)
+  assert.equal(validateFormat('TR123456789'), false)
+  assert.equal(validateFormat('UA12345678'), false)
+})
+
 // Greek VAT numbers carry the VIES prefix EL while the dataset keys Greece as GR.
 test('validateFormat handles the Greek EL prefix', () => {
   assert.equal(validateFormat('EL123456789'), true)
